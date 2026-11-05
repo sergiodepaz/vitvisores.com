@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitvisor - Tutoriales de Informática y Tecnología</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            color: #333;
+        }
+
+        /* Header y Navegación */
+        header {
+            background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(14, 165, 233, 0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: white;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            margin-top: 0.5rem;
+            overflow: hidden;
+            padding: 0.5rem 0;
+            border-top: 3px solid #F97316;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            color: #2d3748;
+            padding: 0.75rem 1.25rem;
+            display: block;
+            transition: all 0.3s;
+        }
+
+        .dropdown-menu a:hover {
+            background: #FFF7ED;
+            color: #F97316;
+            padding-left: 1.5rem;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.25);
+            border-radius: 20px;
+            padding: 0.3rem 1rem;
+            transition: background 0.3s;
+        }
+
+        .search-box:focus-within {
+            background: rgba(255,255,255,0.4);
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: white;
+            outline: none;
+            width: 150px;
+            font-size: 0.95rem;
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .search-icon {
+            margin-left: 0.5rem;
+            font-size: 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%);
+            color: white;
+            padding: 3rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Grid de Artículos */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #38BDF8;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.2);
+            border-top-color: #F97316;
+        }
+
+        .article-card.hidden {
+            display: none;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 1.25rem;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: #F97316;
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .article-title {
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+            color: #2d3748;
+        }
+
+        .article-excerpt {
+            color: #718096;
+            line-height: 1.5;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .read-more {
+            color: #0EA5E9;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .read-more:hover {
+            color: #F97316;
+            text-decoration: underline;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #718096;
+            font-size: 1.2rem;
+            display: none;
+        }
+
+        .no-results.show {
+            display: block;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+            border-top: 5px solid #F97316;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            z-index: 10;
+            transition: all 0.3s;
+            color: #F97316;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+            background: #F97316;
+            color: white;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-category {
+            display: inline-block;
+            background: #F97316;
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .modal-text {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .modal-text h3 {
+            color: #0EA5E9;
+            margin: 1.5rem 0 0.75rem;
+            font-size: 1.3rem;
+            border-left: 4px solid #F97316;
+            padding-left: 0.75rem;
+        }
+
+        .modal-text ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-text li {
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+        }
+
+        .modal-text li::marker {
+            color: #F97316;
+        }
+
+        .modal-text a {
+            color: #0EA5E9;
+            text-decoration: none;
+        }
+
+        .modal-text a:hover {
+            color: #F97316;
+            text-decoration: underline;
+        }
+
+        /* Sección de Contacto - Más compacta */
+        .contact-section {
+            background: white;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-title {
+            text-align: center;
+            font-size: 1.75rem;
+            margin-bottom: 0.4rem;
+            color: #0EA5E9;
+        }
+
+        .contact-subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background: #F0F9FF;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid #38BDF8;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: #2d3748;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #BAE6FD;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #F97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.85rem;
+            background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #1E293B;
+            color: white;
+            padding: 3rem 2rem 1rem;
+            border-top: 4px solid #F97316;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #38BDF8;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #94A3B8;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #F97316;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94A3B8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-box {
+                display: none;
+            }
+
+            .modal-content {
+                margin: 1rem;
+                max-height: 95vh;
+            }
+
+            .modal-image {
+                height: 200px;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header y Navegación -->
+    <header>
+        <nav>
+            <div class="logo">
+                <span>📘</span>
+                <span>Vitvisor</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li class="dropdown">
+                    <span class="dropdown-toggle">Categorías ▼</span>
+                    <div class="dropdown-menu">
+                        <a href="#" data-category="todos">Todos</a>
+                        <a href="#" data-category="Sistemas Operativos">Sistemas Operativos</a>
+                        <a href="#" data-category="Programación">Programación</a>
+                        <a href="#" data-category="Lenguajes de Marcas">Lenguajes de Marcas</a>
+                        <a href="#" data-category="Bases de Datos">Bases de Datos</a>
+                        <a href="#" data-category="Redes">Redes</a>
+                        <a href="#" data-category="Hardware">Hardware</a>
+                    </div>
+                </li>
+                <li><a href="#tutoriales">Tutoriales</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li>
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Buscar...">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <h1>Bienvenido a Vitvisor</h1>
+        <p>Tu fuente de conocimiento tecnológico. Explora nuestros tutoriales y guías sobre informática, programación y más.</p>
+    </section>
+
+    <!-- Grid de Artículos -->
+    <div class="container" id="tutoriales">
+        <div class="articles-grid" id="articlesGrid">
+            
+            <!-- Artículo 1 -->
+            <article class="article-card" data-category="Sistemas Operativos">
+                <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop" alt="Sistema Operativo" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Sistemas Operativos</span>
+                    <h3 class="article-title">¿Qué es un Sistema Operativo?</h3>
+                    <p class="article-excerpt">Descubre qué es un sistema operativo, sus funciones principales y los tipos más populares como Windows, Linux y macOS.</p>
+                    <span class="read-more" onclick="openModal('modal1')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 2 -->
+            <article class="article-card" data-category="Programación">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop" alt="Lenguaje de Marcas" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Programación</span>
+                    <h3 class="article-title">¿Qué es un Lenguaje de Marcas?</h3>
+                    <p class="article-excerpt">Aprende sobre HTML, XML y otros lenguajes de marcas. Entiende cómo estructurar documentos digitales.</p>
+                    <span class="read-more" onclick="openModal('modal2')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 3 -->
+            <article class="article-card" data-category="Redes">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop" alt="Internet" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Redes</span>
+                    <h3 class="article-title">¿Qué es Internet?</h3>
+                    <p class="article-excerpt">Conoce la historia de Internet, cómo funciona la red de redes y los protocolos de comunicación global.</p>
+                    <span class="read-more" onclick="openModal('modal3')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 4 -->
+            <article class="article-card" data-category="Redes">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop" alt="Servidor" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Redes</span>
+                    <h3 class="article-title">¿Qué es un Servidor?</h3>
+                    <p class="article-excerpt">Explora el mundo de los servidores: tipos, funciones y cómo proporcionan servicios en una red.</p>
+                    <span class="read-more" onclick="openModal('modal4')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 5 -->
+            <article class="article-card" data-category="Bases de Datos">
+                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=300&fit=crop" alt="Base de Datos" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Bases de Datos</span>
+                    <h3 class="article-title">SQL vs NoSQL: La Base de la Información</h3>
+                    <p class="article-excerpt">Compara las bases de datos relacionales y no relacionales. Aprende cuándo usar cada tipo.</p>
+                    <span class="read-more" onclick="openModal('modal5')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 6 -->
+            <article class="article-card" data-category="Hardware">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop" alt="CPU" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Hardware</span>
+                    <h3 class="article-title">¿Qué es la CPU? El Cerebro del Ordenador</h3>
+                    <p class="article-excerpt">Entiende el funcionamiento de la Unidad Central de Procesamiento y sus componentes.</p>
+                    <span class="read-more" onclick="openModal('modal6')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 7 -->
+            <article class="article-card" data-category="Sistemas Operativos">
+                <img src="https://images.unsplash.com/photo-1624571409412-1f253e1ecc39?w=400&h=300&fit=crop" alt="Linux" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Sistemas Operativos</span>
+                    <h3 class="article-title">Introducción a Linux</h3>
+                    <p class="article-excerpt">Descubre el mundo de Linux, sus distribuciones más populares y por qué es tan usado en servidores.</p>
+                    <span class="read-more" onclick="openModal('modal7')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 8 -->
+            <article class="article-card" data-category="Programación">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop" alt="Python" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Programación</span>
+                    <h3 class="article-title">Primeros pasos con Python</h3>
+                    <p class="article-excerpt">Aprende los fundamentos de Python, uno de los lenguajes más populares y versátiles del mundo.</p>
+                    <span class="read-more" onclick="openModal('modal8')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 9 -->
+            <article class="article-card" data-category="Lenguajes de Marcas">
+                <img src="https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=400&h=300&fit=crop" alt="HTML" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Lenguajes de Marcas</span>
+                    <h3 class="article-title">HTML5: Estructura de la Web</h3>
+                    <p class="article-excerpt">Conoce las etiquetas esenciales de HTML5 y cómo crear tu primera página web desde cero.</p>
+                    <span class="read-more" onclick="openModal('modal9')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 10 -->
+            <article class="article-card" data-category="Bases de Datos">
+                <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=400&h=300&fit=crop" alt="MySQL" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Bases de Datos</span>
+                    <h3 class="article-title">MySQL: Gestión de Datos Relacionales</h3>
+                    <p class="article-excerpt">Aprende a crear, consultar y gestionar bases de datos relacionales con MySQL.</p>
+                    <span class="read-more" onclick="openModal('modal10')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 11 -->
+            <article class="article-card" data-category="Redes">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop" alt="Router" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Redes</span>
+                    <h3 class="article-title">¿Cómo funciona un Router?</h3>
+                    <p class="article-excerpt">Descubre el papel fundamental del router en las redes domésticas y empresariales.</p>
+                    <span class="read-more" onclick="openModal('modal11')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 12 -->
+            <article class="article-card" data-category="Hardware">
+                <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=400&h=300&fit=crop" alt="RAM" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Hardware</span>
+                    <h3 class="article-title">Memoria RAM: ¿Cuánta necesito?</h3>
+                    <p class="article-excerpt">Entiende qué es la memoria RAM, cómo funciona y cuánta necesitas según tu uso.</p>
+                    <span class="read-more" onclick="openModal('modal12')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 13 -->
+            <article class="article-card" data-category="Sistemas Operativos">
+                <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=400&h=300&fit=crop" alt="Windows" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Sistemas Operativos</span>
+                    <h3 class="article-title">Windows 11: Novedades y Requisitos</h3>
+                    <p class="article-excerpt">Conoce las nuevas funciones de Windows 11 y los requisitos para actualizar tu equipo.</p>
+                    <span class="read-more" onclick="openModal('modal13')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 14 -->
+            <article class="article-card" data-category="Programación">
+                <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&h=300&fit=crop" alt="JavaScript" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Programación</span>
+                    <h3 class="article-title">JavaScript: El lenguaje de la Web</h3>
+                    <p class="article-excerpt">Descubre por qué JavaScript es esencial para el desarrollo web moderno y sus frameworks.</p>
+                    <span class="read-more" onclick="openModal('modal14')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 15 -->
+            <article class="article-card" data-category="Lenguajes de Marcas">
+                <img src="https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=400&h=300&fit=crop" alt="CSS" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Lenguajes de Marcas</span>
+                    <h3 class="article-title">CSS3: Diseño y Estilos Web</h3>
+                    <p class="article-excerpt">Aprende a dar vida a tus páginas web con CSS3, animaciones y diseño responsive.</p>
+                    <span class="read-more" onclick="openModal('modal15')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 16 -->
+            <article class="article-card" data-category="Bases de Datos">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop" alt="MongoDB" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Bases de Datos</span>
+                    <h3 class="article-title">MongoDB: Bases de Datos NoSQL</h3>
+                    <p class="article-excerpt">Explora MongoDB y el modelo de documentos JSON para aplicaciones modernas y escalables.</p>
+                    <span class="read-more" onclick="openModal('modal16')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 17 -->
+            <article class="article-card" data-category="Redes">
+                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=300&fit=crop" alt="WiFi" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Redes</span>
+                    <h3 class="article-title">Redes WiFi: Configuración y Seguridad</h3>
+                    <p class="article-excerpt">Aprende a configurar tu red WiFi de forma segura y optimizar su rendimiento en casa.</p>
+                    <span class="read-more" onclick="openModal('modal17')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 18 -->
+            <article class="article-card" data-category="Hardware">
+                <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d8?w=400&h=300&fit=crop" alt="Disco Duro" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Hardware</span>
+                    <h3 class="article-title">SSD vs HDD: ¿Cuál elegir?</h3>
+                    <p class="article-excerpt">Compara las ventajas y desventajas de los discos sólidos y mecánicos para tu equipo.</p>
+                    <span class="read-more" onclick="openModal('modal18')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 19 -->
+            <article class="article-card" data-category="Sistemas Operativos">
+                <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&h=300&fit=crop" alt="Android" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Sistemas Operativos</span>
+                    <h3 class="article-title">Android: El sistema móvil más usado</h3>
+                    <p class="article-excerpt">Descubre la arquitectura de Android, sus versiones y cómo funciona el ecosistema Google.</p>
+                    <span class="read-more" onclick="openModal('modal19')">Leer más →</span>
+                </div>
+            </article>
+
+            <!-- Artículo 20 -->
+            <article class="article-card" data-category="Programación">
+                <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400&h=300&fit=crop" alt="Git" class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Programación</span>
+                    <h3 class="article-title">Git y GitHub: Control de Versiones</h3>
+                    <p class="article-excerpt">Aprende a usar Git para gestionar el código de tus proyectos y colaborar en GitHub.</p>
+                    <span class="read-more" onclick="openModal('modal20')">Leer más →</span>
+                </div>
+            </article>
+
+        </div>
+        <div class="no-results" id="noResults">
+            😕 No se encontraron resultados para tu búsqueda.
+        </div>
+    </div>
+
+    <!-- MODALES -->
+    
+    <!-- Modal 1: Sistema Operativo -->
+    <div class="modal-overlay" id="modal1" onclick="closeModal(event, 'modal1')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal1')">×</button>
+            <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=400&fit=crop" alt="Sistema Operativo" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Sistemas Operativos</span>
+                <h2 class="modal-title">¿Qué es un Sistema Operativo?</h2>
+                <div class="modal-text">
+                    <p>Un <strong>sistema operativo</strong> es el software principal de una computadora que gestiona los recursos de hardware y proporciona servicios a los programas de aplicación. Actúa como intermediario entre el usuario y el hardware de la computadora.</p>
+                    
+                    <h3>Funciones Principales:</h3>
+                    <ul>
+                        <li>Gestión de memoria y procesos</li>
+                        <li>Administración de archivos y directorios</li>
+                        <li>Control de dispositivos de entrada/salida</li>
+                        <li>Seguridad y protección del sistema</li>
+                        <li>Interfaz de usuario (gráfica o línea de comandos)</li>
+                    </ul>
+
+                    <h3>Tipos de Sistemas Operativos:</h3>
+                    <ul>
+                        <li><strong>Windows:</strong> El sistema más popular para PCs</li>
+                        <li><strong>macOS:</strong> Sistema exclusivo de Apple</li>
+                        <li><strong>Linux:</strong> Sistema de código abierto con múltiples distribuciones</li>
+                        <li><strong>Android/iOS:</strong> Sistemas operativos móviles</li>
+                    </ul>
+
+                    <p>Los sistemas operativos modernos permiten la multitarea, la ejecución simultánea de múltiples programas y la gestión eficiente de los recursos del sistema.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Lenguaje de Marcas -->
+    <div class="modal-overlay" id="modal2" onclick="closeModal(event, 'modal2')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal2')">×</button>
+            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop" alt="Lenguaje de Marcas" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Programación</span>
+                <h2 class="modal-title">¿Qué es un Lenguaje de Marcas?</h2>
+                <div class="modal-text">
+                    <p>Un <strong>lenguaje de marcas</strong> es un sistema de notación que permite etiquetar o marcar elementos en un documento para indicar su estructura, formato o significado. A diferencia de los lenguajes de programación, no realizan cálculos ni operaciones lógicas.</p>
+                    
+                    <h3>Lenguajes de Marcas Más Comunes:</h3>
+                    <ul>
+                        <li><strong>HTML (HyperText Markup Language):</strong> Estándar para crear páginas web. Define la estructura del contenido mediante etiquetas como &lt;h1&gt;, &lt;p&gt;, &lt;div&gt;, etc.</li>
+                        <li><strong>XML (eXtensible Markup Language):</strong> Utilizado para almacenar y transportar datos de forma estructurada.</li>
+                        <li><strong>CSS (Cascading Style Sheets):</strong> Aunque no es estrictamente un lenguaje de marcas, complementa a HTML definiendo estilos y presentación.</li>
+                        <li><strong>JSON:</strong> Formato ligero de intercambio de datos basado en texto.</li>
+                    </ul>
+
+                    <h3>Características:</h3>
+                    <ul>
+                        <li>Sintaxis basada en etiquetas o marcadores</li>
+                        <li>Estructura jerárquica y anidada</li>
+                        <li>Independiente del lenguaje de programación</li>
+                        <li>Legible tanto para humanos como máquinas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Internet -->
+    <div class="modal-overlay" id="modal3" onclick="closeModal(event, 'modal3')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal3')">×</button>
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop" alt="Internet" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Redes</span>
+                <h2 class="modal-title">¿Qué es Internet?</h2>
+                <div class="modal-text">
+                    <p><strong>Internet</strong> es una red global de redes informáticas interconectadas que utilizan protocolos de comunicación estandarizados (TCP/IP) para compartir información y recursos a nivel mundial.</p>
+                    
+                    <h3>Historia:</h3>
+                    <p>Nació en 1969 como ARPANET, un proyecto del Departamento de Defensa de EE.UU. En 1989, Tim Berners-Lee inventó la World Wide Web (WWW), revolucionando la forma en que accedemos a la información.</p>
+
+                    <h3>¿Cómo Funciona?</h3>
+                    <ul>
+                        <li><strong>Protocolos:</strong> TCP/IP permite la comunicación entre dispositivos</li>
+                        <li><strong>Direcciones IP:</strong> Identifican de forma única cada dispositivo en la red</li>
+                        <li><strong>DNS:</strong> Traduce nombres de dominio a direcciones IP</li>
+                        <li><strong>Routers:</strong> Dirigen el tráfico de datos entre redes</li>
+                    </ul>
+
+                    <h3>Servicios Principales:</h3>
+                    <ul>
+                        <li>World Wide Web (páginas web)</li>
+                        <li>Correo electrónico</li>
+                        <li>Transferencia de archivos (FTP)</li>
+                        <li>Mensajería instantánea</li>
+                        <li>Streaming de video y audio</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: Servidor -->
+    <div class="modal-overlay" id="modal4" onclick="closeModal(event, 'modal4')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal4')">×</button>
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop" alt="Servidor" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Redes</span>
+                <h2 class="modal-title">¿Qué es un Servidor?</h2>
+                <div class="modal-text">
+                    <p>Un <strong>servidor</strong> es un sistema informático (hardware y software) que proporciona datos, recursos o servicios a otros programas o dispositivos llamados "clientes" a través de una red.</p>
+                    
+                    <h3>Características:</h3>
+                    <ul>
+                        <li>Alto rendimiento: múltiples CPUs, gran RAM</li>
+                        <li>Almacenamiento robusto con RAID</li>
+                        <li>Conectividad de red de alta velocidad</li>
+                        <li>Redundancia y refrigeración avanzada</li>
+                        <li>Funcionamiento 24/7</li>
+                    </ul>
+
+                    <h3>Tipos según función:</h3>
+                    <ul>
+                        <li>🌐 <strong>Servidor Web:</strong> Apache, Nginx - Sirven páginas web</li>
+                        <li>📧 <strong>Servidor de Correo:</strong> Gestionan emails</li>
+                        <li>🗄️ <strong>Servidor de Base de Datos:</strong> MySQL, PostgreSQL</li>
+                        <li> <strong>Servidor DNS:</strong> Resuelven nombres de dominio</li>
+                        <li>🔄 <strong>Servidor Proxy:</strong> Intermediarios de red</li>
+                    </ul>
+
+                    <h3>¿Para qué sirve?</h3>
+                    <ul>
+                        <li><strong>Almacena archivos:</strong> Guarda y entrega documentos, imágenes, videos</li>
+                        <li><strong>Hospeda sitios web:</strong> Alberga páginas web y las envía a los clientes que quieren acceder a ellas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5: Bases de Datos -->
+    <div class="modal-overlay" id="modal5" onclick="closeModal(event, 'modal5')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal5')">×</button>
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=400&fit=crop" alt="Base de Datos" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Bases de Datos</span>
+                <h2 class="modal-title">SQL vs NoSQL: La Base de la Información</h2>
+                <div class="modal-text">
+                    <p>Las <strong>bases de datos</strong> son sistemas organizados para almacenar, gestionar y recuperar información de manera eficiente. Existen dos grandes categorías: SQL (relacionales) y NoSQL (no relacionales).</p>
+                    
+                    <h3>Bases de Datos SQL (Relacionales):</h3>
+                    <ul>
+                        <li>Estructura tabular con filas y columnas</li>
+                        <li>Esquema definido y rígido</li>
+                        <li>Relaciones entre tablas mediante claves</li>
+                        <li>Cumplen propiedades ACID (Atomicidad, Consistencia, Aislamiento, Durabilidad)</li>
+                        <li><strong>Ejemplos:</strong> MySQL, PostgreSQL, Oracle, SQL Server</li>
+                    </ul>
+
+                    <h3>Bases de Datos NoSQL (No Relacionales):</h3>
+                    <ul>
+                        <li>Estructuras flexibles: documentos, clave-valor, grafos, columnas</li>
+                        <li>Escalabilidad horizontal</li>
+                        <li>Ideales para big data y aplicaciones en tiempo real</li>
+                        <li><strong>Ejemplos:</strong> MongoDB, Redis, Cassandra, Neo4j</li>
+                    </ul>
+
+                    <h3>¿Cuándo usar cada una?</h3>
+                    <ul>
+                        <li><strong>SQL:</strong> Cuando necesitas transacciones complejas, integridad de datos y estructura definida</li>
+                        <li><strong>NoSQL:</strong> Para grandes volúmenes de datos, escalabilidad y flexibilidad de esquema</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6: CPU -->
+    <div class="modal-overlay" id="modal6" onclick="closeModal(event, 'modal6')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal6')">×</button>
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop" alt="CPU" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Hardware</span>
+                <h2 class="modal-title">¿Qué es la CPU? El Cerebro del Ordenador</h2>
+                <div class="modal-text">
+                    <p>La <strong>Unidad Central de Procesamiento (CPU)</strong> es el componente principal de una computadora que ejecuta instrucciones de programas y procesa datos. Es considerada el "cerebro" del sistema.</p>
+                    
+                    <h3>Componentes Principales:</h3>
+                    <ul>
+                        <li><strong>ALU (Unidad Aritmético-Lógica):</strong> Realiza operaciones matemáticas y lógicas</li>
+                        <li><strong>Unidad de Control:</strong> Coordina y dirige el funcionamiento del procesador</li>
+                        <li><strong>Registros:</strong> Almacenamiento temporal ultrarrápido</li>
+                        <li><strong>Cache:</strong> Memoria rápida para datos frecuentes</li>
+                    </ul>
+
+                    <h3>Características Importantes:</h3>
+                    <ul>
+                        <li><strong>Frecuencia de reloj:</strong> Medida en GHz, indica cuántas operaciones puede realizar por segundo</li>
+                        <li><strong>Núcleos:</strong> CPUs modernas tienen múltiples núcleos (dual-core, quad-core, etc.)</li>
+                        <li><strong>Hilos de ejecución:</strong> Tecnología Hyper-Threading permite ejecutar múltiples procesos simultáneos</li>
+                        <li><strong>TDP:</strong> Potencia de diseño térmico, indica consumo energético y calor generado</li>
+                    </ul>
+
+                    <h3>Fabricantes Principales:</h3>
+                    <ul>
+                        <li><strong>Intel:</strong> Core i3, i5, i7, i9</li>
+                        <li><strong>AMD:</strong> Ryzen 3, 5, 7, 9</li>
+                        <li><strong>ARM:</strong> Procesadores para móviles y dispositivos embebidos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 7: Linux -->
+    <div class="modal-overlay" id="modal7" onclick="closeModal(event, 'modal7')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal7')">×</button>
+            <img src="https://images.unsplash.com/photo-1624571409412-1f253e1ecc39?w=800&h=400&fit=crop" alt="Linux" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Sistemas Operativos</span>
+                <h2 class="modal-title">Introducción a Linux</h2>
+                <div class="modal-text">
+                    <p><strong>Linux</strong> es un sistema operativo de código abierto creado por Linus Torvalds en 1991. Es la base de la mayoría de servidores web, supercomputadoras y dispositivos embebidos del mundo.</p>
+                    
+                    <h3>Distribuciones Populares:</h3>
+                    <ul>
+                        <li><strong>Ubuntu:</strong> Ideal para principiantes, gran comunidad</li>
+                        <li><strong>Debian:</strong> Estabilidad y robustez</li>
+                        <li><strong>Fedora:</strong> Innovación y tecnologías nuevas</li>
+                        <li><strong>Arch Linux:</strong> Para usuarios avanzados</li>
+                        <li><strong>CentOS/Rocky Linux:</strong> Entornos empresariales</li>
+                    </ul>
+
+                    <h3>Ventajas:</h3>
+                    <ul>
+                        <li>Gratuito y de código abierto</li>
+                        <li>Alta seguridad y estabilidad</li>
+                        <li>Personalización total</li>
+                        <li>Gran soporte de comunidad</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 8: Python -->
+    <div class="modal-overlay" id="modal8" onclick="closeModal(event, 'modal8')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal8')">×</button>
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop" alt="Python" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Programación</span>
+                <h2 class="modal-title">Primeros pasos con Python</h2>
+                <div class="modal-text">
+                    <p><strong>Python</strong> es un lenguaje de programación de alto nivel, interpretado y de propósito general. Destaca por su sintaxis clara y legible, lo que lo hace ideal para principiantes.</p>
+                    
+                    <h3>¿Para qué se usa Python?</h3>
+                    <ul>
+                        <li>Desarrollo web (Django, Flask)</li>
+                        <li>Ciencia de datos y Machine Learning</li>
+                        <li>Automatización de tareas</li>
+                        <li>Desarrollo de videojuegos</li>
+                        <li>Aplicaciones de escritorio</li>
+                    </ul>
+
+                    <h3>Conceptos Básicos:</h3>
+                    <ul>
+                        <li>Variables y tipos de datos</li>
+                        <li>Estructuras de control (if, for, while)</li>
+                        <li>Funciones y módulos</li>
+                        <li>Clases y objetos (POO)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 9: HTML5 -->
+    <div class="modal-overlay" id="modal9" onclick="closeModal(event, 'modal9')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal9')">×</button>
+            <img src="https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=800&h=400&fit=crop" alt="HTML" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Lenguajes de Marcas</span>
+                <h2 class="modal-title">HTML5: Estructura de la Web</h2>
+                <div class="modal-text">
+                    <p><strong>HTML5</strong> es la quinta versión del lenguaje de marcado de hipertexto, el estándar para crear páginas web. Introduce nuevas etiquetas semánticas y APIs poderosas.</p>
+                    
+                    <h3>Etiquetas Semánticas Nuevas:</h3>
+                    <ul>
+                        <li><code>&lt;header&gt;</code> - Cabecera del documento o sección</li>
+                        <li><code>&lt;nav&gt;</code> - Navegación principal</li>
+                        <li><code>&lt;main&gt;</code> - Contenido principal</li>
+                        <li><code>&lt;article&gt;</code> - Contenido independiente</li>
+                        <li><code>&lt;footer&gt;</code> - Pie de página</li>
+                    </ul>
+
+                    <h3>Nuevas Funcionalidades:</h3>
+                    <ul>
+                        <li>Etiquetas de audio y video nativas</li>
+                        <li>Canvas para gráficos 2D</li>
+                        <li>Formularios mejorados</li>
+                        <li>Almacenamiento local (localStorage)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 10: MySQL -->
+    <div class="modal-overlay" id="modal10" onclick="closeModal(event, 'modal10')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal10')">×</button>
+            <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&h=400&fit=crop" alt="MySQL" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Bases de Datos</span>
+                <h2 class="modal-title">MySQL: Gestión de Datos Relacionales</h2>
+                <div class="modal-text">
+                    <p><strong>MySQL</strong> es uno de los sistemas de gestión de bases de datos relacionales más populares del mundo, desarrollado originalmente por MySQL AB y ahora propiedad de Oracle.</p>
+                    
+                    <h3>Comandos SQL Básicos:</h3>
+                    <ul>
+                        <li><code>CREATE TABLE</code> - Crear una nueva tabla</li>
+                        <li><code>INSERT INTO</code> - Insertar datos</li>
+                        <li><code>SELECT</code> - Consultar datos</li>
+                        <li><code>UPDATE</code> - Modificar datos existentes</li>
+                        <li><code>DELETE</code> - Eliminar registros</li>
+                    </ul>
+
+                    <h3>Ventajas:</h3>
+                    <ul>
+                        <li>Gratuito y de código abierto</li>
+                        <li>Alto rendimiento y fiabilidad</li>
+                        <li>Gran comunidad y documentación</li>
+                        <li>Compatible con múltiples lenguajes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 11: Router -->
+    <div class="modal-overlay" id="modal11" onclick="closeModal(event, 'modal11')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal11')">×</button>
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop" alt="Router" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Redes</span>
+                <h2 class="modal-title">¿Cómo funciona un Router?</h2>
+                <div class="modal-text">
+                    <p>Un <strong>router</strong> (enrutador) es un dispositivo de red que dirige el tráfico de datos entre diferentes redes, permitiendo que los dispositivos se conecten a Internet y entre sí.</p>
+                    
+                    <h3>Funciones Principales:</h3>
+                    <ul>
+                        <li>Asignar direcciones IP (servidor DHCP)</li>
+                        <li>Enrutar paquetes de datos</li>
+                        <li>Proteger la red (firewall)</li>
+                        <li>Proporcionar conectividad WiFi</li>
+                        <li>Gestionar el tráfico de red (NAT)</li>
+                    </ul>
+
+                    <h3>Tipos de Routers:</h3>
+                    <ul>
+                        <li><strong>Domésticos:</strong> Para hogares, combinan router y switch</li>
+                        <li><strong>Empresariales:</strong> Mayor capacidad y seguridad</li>
+                        <li><strong>Inalámbricos:</strong> Con WiFi integrado</li>
+                        <li><strong>De borde:</strong> Conectan redes internas con externas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 12: RAM -->
+    <div class="modal-overlay" id="modal12" onclick="closeModal(event, 'modal12')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal12')">×</button>
+            <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&h=400&fit=crop" alt="RAM" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Hardware</span>
+                <h2 class="modal-title">Memoria RAM: ¿Cuánta necesito?</h2>
+                <div class="modal-text">
+                    <p>La <strong>memoria RAM</strong> (Random Access Memory) es la memoria de acceso aleatorio donde el computador almacena temporalmente los datos que está utilizando en ese momento.</p>
+                    
+                    <h3>¿Cuánta RAM necesito?</h3>
+                    <ul>
+                        <li><strong>4 GB:</strong> Uso básico (navegación, ofimática ligera)</li>
+                        <li><strong>8 GB:</strong> Uso estándar (multitarea, juegos ligeros)</li>
+                        <li><strong>16 GB:</strong> Uso avanzado (gaming, edición de fotos)</li>
+                        <li><strong>32 GB+:</strong> Profesional (edición de video, virtualización)</li>
+                    </ul>
+
+                    <h3>Tipos de RAM:</h3>
+                    <ul>
+                        <li><strong>DDR4:</strong> Estándar actual, buen rendimiento</li>
+                        <li><strong>DDR5:</strong> Nueva generación, mayor velocidad</li>
+                        <li><strong>LPDDR:</strong> Para dispositivos móviles, bajo consumo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 13: Windows 11 -->
+    <div class="modal-overlay" id="modal13" onclick="closeModal(event, 'modal13')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal13')">×</button>
+            <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=800&h=400&fit=crop" alt="Windows" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Sistemas Operativos</span>
+                <h2 class="modal-title">Windows 11: Novedades y Requisitos</h2>
+                <div class="modal-text">
+                    <p><strong>Windows 11</strong> es la última versión del sistema operativo de Microsoft, lanzado en octubre de 2021. Trae un diseño renovado y nuevas funcionalidades.</p>
+                    
+                    <h3>Novedades Principales:</h3>
+                    <ul>
+                        <li>Nuevo diseño con esquinas redondeadas</li>
+                        <li>Menú Inicio centrado</li>
+                        <li>Widgets personalizados</li>
+                        <li>Mejor integración con Microsoft Teams</li>
+                        <li>Soporte para aplicaciones Android</li>
+                        <li>Snap Layouts para multitarea</li>
+                    </ul>
+
+                    <h3>Requisitos Mínimos:</h3>
+                    <ul>
+                        <li>Procesador de 1 GHz con 2+ núcleos</li>
+                        <li>4 GB de RAM</li>
+                        <li>64 GB de almacenamiento</li>
+                        <li>TPM 2.0 (módulo de seguridad)</li>
+                        <li>Tarjeta gráfica compatible con DirectX 12</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 14: JavaScript -->
+    <div class="modal-overlay" id="modal14" onclick="closeModal(event, 'modal14')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal14')">×</button>
+            <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=400&fit=crop" alt="JavaScript" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Programación</span>
+                <h2 class="modal-title">JavaScript: El lenguaje de la Web</h2>
+                <div class="modal-text">
+                    <p><strong>JavaScript</strong> es el lenguaje de programación de la web. Permite crear páginas interactivas y dinámicas, y es esencial para el desarrollo frontend y backend moderno.</p>
+                    
+                    <h3>¿Qué puedes hacer con JavaScript?</h3>
+                    <ul>
+                        <li>Crear interactividad en páginas web</li>
+                        <li>Desarrollar aplicaciones web completas</li>
+                        <li>Crear aplicaciones móviles (React Native)</li>
+                        <li>Desarrollar backend con Node.js</li>
+                        <li>Crear videojuegos y aplicaciones de escritorio</li>
+                    </ul>
+
+                    <h3>Frameworks y Librerías Populares:</h3>
+                    <ul>
+                        <li><strong>React:</strong> De Facebook, para interfaces de usuario</li>
+                        <li><strong>Vue.js:</strong> Progresivo y fácil de aprender</li>
+                        <li><strong>Angular:</strong> De Google, para aplicaciones empresariales</li>
+                        <li><strong>Node.js:</strong> JavaScript en el servidor</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 15: CSS3 -->
+    <div class="modal-overlay" id="modal15" onclick="closeModal(event, 'modal15')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal15')">×</button>
+            <img src="https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800&h=400&fit=crop" alt="CSS" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Lenguajes de Marcas</span>
+                <h2 class="modal-title">CSS3: Diseño y Estilos Web</h2>
+                <div class="modal-text">
+                    <p><strong>CSS3</strong> (Cascading Style Sheets) es el lenguaje utilizado para describir la presentación de documentos HTML. Controla colores, fuentes, layouts, animaciones y mucho más.</p>
+                    
+                    <h3>Características Principales:</h3>
+                    <ul>
+                        <li>Selectores avanzados y pseudoclases</li>
+                        <li>Flexbox y CSS Grid para layouts</li>
+                        <li>Animaciones y transiciones</li>
+                        <li>Diseño responsive con Media Queries</li>
+                        <li>Variables CSS (custom properties)</li>
+                    </ul>
+
+                    <h3>Conceptos Clave:</h3>
+                    <ul>
+                        <li><strong>Box Model:</strong> margin, border, padding, content</li>
+                        <li><strong>Flexbox:</strong> Distribución flexible en una dimensión</li>
+                        <li><strong>Grid:</strong> Layouts complejos en dos dimensiones</li>
+                        <li><strong>Responsive:</strong> Adaptación a diferentes pantallas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 16: MongoDB -->
+    <div class="modal-overlay" id="modal16" onclick="closeModal(event, 'modal16')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal16')">×</button>
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop" alt="MongoDB" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Bases de Datos</span>
+                <h2 class="modal-title">MongoDB: Bases de Datos NoSQL</h2>
+                <div class="modal-text">
+                    <p><strong>MongoDB</strong> es una base de datos NoSQL orientada a documentos que almacena datos en formato BSON (similar a JSON). Es ideal para aplicaciones modernas y escalables.</p>
+                    
+                    <h3>Características:</h3>
+                    <ul>
+                        <li>Esquema flexible (sin estructura fija)</li>
+                        <li>Alto rendimiento y escalabilidad horizontal</li>
+                        <li>Consultas potentes y agregaciones</li>
+                        <li>Índices para búsquedas rápidas</li>
+                        <li>Replicación y sharding automático</li>
+                    </ul>
+
+                    <h3>¿Cuándo usar MongoDB?</h3>
+                    <ul>
+                        <li>Aplicaciones con datos no estructurados</li>
+                        <li>Proyectos que requieren escalabilidad rápida</li>
+                        <li>Desarrollo ágil con cambios frecuentes</li>
+                        <li>Aplicaciones en tiempo real</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 17: WiFi -->
+    <div class="modal-overlay" id="modal17" onclick="closeModal(event, 'modal17')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal17')">×</button>
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=400&fit=crop" alt="WiFi" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Redes</span>
+                <h2 class="modal-title">Redes WiFi: Configuración y Seguridad</h2>
+                <div class="modal-text">
+                    <p>Las <strong>redes WiFi</strong> permiten la conexión inalámbrica de dispositivos a Internet mediante ondas de radio. Configurarlas correctamente es esencial para velocidad y seguridad.</p>
+                    
+                    <h3>Estándares WiFi:</h3>
+                    <ul>
+                        <li><strong>WiFi 4 (802.11n):</strong> Hasta 600 Mbps</li>
+                        <li><strong>WiFi 5 (802.11ac):</strong> Hasta 3.5 Gbps</li>
+                        <li><strong>WiFi 6 (802.11ax):</strong> Mayor eficiencia y velocidad</li>
+                        <li><strong>WiFi 6E:</strong> Incluye banda de 6 GHz</li>
+                    </ul>
+
+                    <h3>Consejos de Seguridad:</h3>
+                    <ul>
+                        <li>Usar cifrado WPA3 o WPA2</li>
+                        <li>Cambiar la contraseña por defecto</li>
+                        <li>Ocultar el nombre de la red (SSID)</li>
+                        <li>Actualizar el firmware del router</li>
+                        <li>Filtrar por dirección MAC</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 18: SSD vs HDD -->
+    <div class="modal-overlay" id="modal18" onclick="closeModal(event, 'modal18')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal18')">×</button>
+            <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d8?w=800&h=400&fit=crop" alt="Disco Duro" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Hardware</span>
+                <h2 class="modal-title">SSD vs HDD: ¿Cuál elegir?</h2>
+                <div class="modal-text">
+                    <p>Elegir entre un <strong>SSD</strong> (unidad de estado sólido) y un <strong>HDD</strong> (disco duro mecánico) depende de tus necesidades de velocidad, capacidad y presupuesto.</p>
+                    
+                    <h3>SSD (Unidad de Estado Sólido):</h3>
+                    <ul>
+                        <li>✅ Mucho más rápido (hasta 10x)</li>
+                        <li>✅ Sin partes móviles, más resistente</li>
+                        <li>✅ Silencioso y menor consumo</li>
+                        <li>❌ Más caro por GB</li>
+                        <li>❌ Capacidad máxima menor</li>
+                    </ul>
+
+                    <h3>HDD (Disco Duro Mecánico):</h3>
+                    <ul>
+                        <li>✅ Más económico por GB</li>
+                        <li>✅ Mayor capacidad disponible</li>
+                        <li>✅ Ideal para almacenamiento masivo</li>
+                        <li>❌ Más lento</li>
+                        <li>❌ Sensible a golpes y vibraciones</li>
+                    </ul>
+
+                    <h3>Recomendación:</h3>
+                    <p>Usa un SSD para el sistema operativo y programas principales, y un HDD para almacenamiento de archivos grandes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 19: Android -->
+    <div class="modal-overlay" id="modal19" onclick="closeModal(event, 'modal19')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal19')">×</button>
+            <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&h=400&fit=crop" alt="Android" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Sistemas Operativos</span>
+                <h2 class="modal-title">Android: El sistema móvil más usado</h2>
+                <div class="modal-text">
+                    <p><strong>Android</strong> es el sistema operativo móvil más utilizado en el mundo, desarrollado por Google. Está basado en el kernel de Linux y es de código abierto.</p>
+                    
+                    <h3>Características:</h3>
+                    <ul>
+                        <li>Interfaz táctil intuitiva</li>
+                        <li>Google Play Store con millones de apps</li>
+                        <li>Personalización total del sistema</li>
+                        <li>Integración con servicios de Google</li>
+                        <li>Actualizaciones de seguridad regulares</li>
+                    </ul>
+
+                    <h3>Versiones Principales:</h3>
+                    <ul>
+                        <li>Android 10 - Modo oscuro nativo</li>
+                        <li>Android 11 - Burbujas de chat</li>
+                        <li>Android 12 - Material You</li>
+                        <li>Android 13 - Privacidad mejorada</li>
+                        <li>Android 14 - Personalización avanzada</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 20: Git -->
+    <div class="modal-overlay" id="modal20" onclick="closeModal(event, 'modal20')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModalBtn('modal20')">×</button>
+            <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&h=400&fit=crop" alt="Git" class="modal-image">
+            <div class="modal-body">
+                <span class="modal-category">Programación</span>
+                <h2 class="modal-title">Git y GitHub: Control de Versiones</h2>
+                <div class="modal-text">
+                    <p><strong>Git</strong> es un sistema de control de versiones distribuido que permite rastrear cambios en el código. <strong>GitHub</strong> es una plataforma en la nube para alojar repositorios Git.</p>
+                    
+                    <h3>Comandos Git Esenciales:</h3>
+                    <ul>
+                        <li><code>git init</code> - Inicializar repositorio</li>
+                        <li><code>git add</code> - Preparar cambios</li>
+                        <li><code>git commit</code> - Guardar cambios</li>
+                        <li><code>git push</code> - Subir al repositorio remoto</li>
+                        <li><code>git pull</code> - Descargar cambios</li>
+                        <li><code>git branch</code> - Gestionar ramas</li>
+                    </ul>
+
+                    <h3>Conceptos Clave:</h3>
+                    <ul>
+                        <li><strong>Repositorio:</strong> Carpeta con historial de cambios</li>
+                        <li><strong>Commit:</strong> Instantánea de cambios</li>
+                        <li><strong>Branch:</strong> Línea de desarrollo paralela</li>
+                        <li><strong>Merge:</strong> Unir ramas</li>
+                        <li><strong>Pull Request:</strong> Proponer cambios en GitHub</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Contacto - Más compacta -->
+    <section class="contact-section" id="contacto">
+        <div class="contact-container">
+            <h2 class="contact-title">Contáctanos</h2>
+            <p class="contact-subtitle">¿Dudas o sugerencias? Escríbenos.</p>
+            
+            <form class="contact-form" action="https://formspree.io/f/meaowyvj" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre *</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="asunto">Asunto</label>
+                    <input type="text" id="asunto" name="asunto" placeholder="¿Sobre qué quieres escribir?">
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensaje">Mensaje *</label>
+                    <textarea id="mensaje" name="mensaje" required placeholder="Escribe tu mensaje..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Enviar Mensaje 📧</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Vitvisor</h3>
+                <p style="color: #94A3B8; line-height: 1.6;">
+                    Tu plataforma de aprendizaje tecnológico. Tutoriales, guías y recursos para mejorar tus habilidades en informática.
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Categorías</h3>
+                <ul>
+                    <li><a href="#">Sistemas Operativos</a></li>
+                    <li><a href="#">Programación</a></li>
+                    <li><a href="#">Bases de Datos</a></li>
+                    <li><a href="#">Redes</a></li>
+                    <li><a href="#">Hardware</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Tutoriales</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>📧 info@vitvisor.com</li>
+                    <li>📱 +34 123 456 789</li>
+                    <li>📍 Madrid, España</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Vitvisor. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script para funcionalidad -->
+    <script>
+        // Smooth scroll para enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Búsqueda en tiempo real
+        const searchInput = document.getElementById('searchInput');
+        const articles = document.querySelectorAll('.article-card');
+        const noResults = document.getElementById('noResults');
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            articles.forEach(article => {
+                const title = article.querySelector('.article-title').textContent.toLowerCase();
+                const excerpt = article.querySelector('.article-excerpt').textContent.toLowerCase();
+                const category = article.querySelector('.article-category').textContent.toLowerCase();
+
+                if (title.includes(query) || excerpt.includes(query) || category.includes(query)) {
+                    article.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    article.classList.add('hidden');
+                }
+            });
+
+            if (visibleCount === 0 && query !== '') {
+                noResults.classList.add('show');
+            } else {
+                noResults.classList.remove('show');
+            }
+        });
+
+        // Filtrar por categoría desde el menú dropdown
+        document.querySelectorAll('.dropdown-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const category = this.getAttribute('data-category');
+
+                articles.forEach(article => {
+                    if (category === 'todos' || article.getAttribute('data-category') === category) {
+                        article.classList.remove('hidden');
+                    } else {
+                        article.classList.add('hidden');
+                    }
+                });
+
+                noResults.classList.remove('show');
+
+                document.getElementById('tutoriales').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Funciones del Modal
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModalBtn(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeModal(event, modalId) {
+            if (event.target.classList.contains('modal-overlay')) {
+                closeModalBtn(modalId);
+            }
+        }
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+
+</body>
+</html>
