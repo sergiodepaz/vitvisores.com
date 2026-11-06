@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="ifqCv2GhUP1T9SNLvbV9kcZ8A8L9zwZdFFmaqcSiANM" />
+    <title>Cómo Instalar Ubuntu Paso a Paso - Vitvisor</title>
+    <meta name="description" content="Guía completa para instalar Ubuntu desde cero: crear USB booteable, particionar disco y configurar el sistema. Tutorial fácil para principiantes.">
+    <meta name="keywords" content="instalar Ubuntu, USB booteable, Rufus, balenaEtcher, particionar disco, dual boot, instalación Ubuntu">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sergiodepaz.github.io/vitvisore/entradas/instalar-ubuntu.html">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📘</text></svg>">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sergiodepaz.github.io/vitvisore/entradas/instalar-ubuntu.html">
+    <meta property="og:title" content="Cómo Instalar Ubuntu Paso a Paso - Vitvisor">
+    <meta property="og:description" content="Guía completa para instalar Ubuntu desde cero. Tutorial fácil para principiantes.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&h=400&fit=crop">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cómo Instalar Ubuntu Paso a Paso - Vitvisor">
+    <meta name="twitter:description" content="Guía completa para instalar Ubuntu desde cero.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&h=400&fit=crop">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"Cómo Instalar Ubuntu Paso a Paso","image":"https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&h=400&fit=crop","author":{"@type":"Organization","name":"Vitvisor"},"publisher":{"@type":"Organization","name":"Vitvisor"},"datePublished":"2026-11-06","description":"Guía completa para instalar Ubuntu desde cero."}
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #333; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(14, 165, 233, 0.3); }
+        nav { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: white; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; transition: opacity 0.3s; }
+        .nav-links a:hover { opacity: 0.8; }
+        .article-header { background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%); color: white; padding: 4rem 2rem 3rem; text-align: center; }
+        .article-header .category { display: inline-block; background: #F97316; color: white; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.9rem; margin-bottom: 1rem; }
+        .article-header h1 { font-size: 2.5rem; margin-bottom: 1rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .article-header .meta { font-size: 0.95rem; opacity: 0.9; }
+        .article-container { max-width: 800px; margin: 0 auto; padding: 3rem 2rem; }
+        .article-image { width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 2rem; }
+        .article-content { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); }
+        .article-content p { margin-bottom: 1.5rem; color: #4a5568; font-size: 1.05rem; line-height: 1.8; }
+        .article-content h2 { color: #0EA5E9; margin: 2rem 0 1rem; font-size: 1.8rem; border-left: 4px solid #F97316; padding-left: 1rem; }
+        .article-content h3 { color: #0EA5E9; margin: 1.5rem 0 0.75rem; font-size: 1.3rem; }
+        .article-content ul, .article-content ol { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+        .article-content li { margin-bottom: 0.5rem; color: #4a5568; }
+        .article-content li::marker { color: #F97316; }
+        .article-content strong { color: #2d3748; }
+        .back-button { display: inline-flex; align-items: center; gap: 0.5rem; color: #0EA5E9; text-decoration: none; font-weight: 600; margin-bottom: 2rem; transition: color 0.3s; }
+        .back-button:hover { color: #F97316; }
+        footer { background: #1E293B; color: white; padding: 3rem 2rem 1rem; border-top: 4px solid #F97316; margin-top: 4rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 2rem; }
+        .footer-section h3 { margin-bottom: 1rem; color: #38BDF8; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.5rem; }
+        .footer-section a { color: #94A3B8; text-decoration: none; transition: all 0.3s; }
+        .footer-section a:hover { color: #F97316; padding-left: 5px; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid #334155; color: #94A3B8; }
+        @media (max-width: 768px) { .article-header h1 { font-size: 1.8rem; } .article-image { height: 250px; } .nav-links { gap: 1rem; font-size: 0.9rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo"><span>📘</span><span>Vitvisor</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../index.html#tutoriales">Tutoriales</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <article>
+        <div class="article-header">
+            <span class="category">Ubuntu</span>
+            <h1>Cómo Instalar Ubuntu Paso a Paso</h1>
+            <div class="meta"><time datetime="2026-11-06">6 de noviembre de 2026</time> · Lectura de 10 min</div>
+        </div>
+
+        <div class="article-container">
+            <a href="../index.html" class="back-button">← Volver a tutoriales</a>
+            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&h=400&fit=crop" alt="Instalación de Ubuntu" class="article-image">
+            
+            <div class="article-content">
+                <p>Instalar Ubuntu es un proceso sencillo que cualquiera puede realizar siguiendo esta guía. En este tutorial aprenderás a <strong>crear un USB booteable</strong>, configurar la BIOS y realizar la instalación paso a paso, ya sea en un equipo nuevo o en <strong>dual boot</strong> junto a Windows.</p>
+                
+                <h2>Requisitos Previos</h2>
+                <ul>
+                    <li>Un ordenador compatible (mínimo 4GB RAM, 25GB de espacio libre)</li>
+                    <li>Un pendrive USB de al menos 4GB (se borrará todo su contenido)</li>
+                    <li>Conexión a Internet</li>
+                    <li>Copia de seguridad de tus datos importantes</li>
+                </ul>
+
+                <h2>Paso 1: Descargar Ubuntu</h2>
+                <p>Ve a la página oficial <strong>ubuntu.com/download</strong> y descarga la última versión LTS (recomendada para la mayoría de usuarios). El archivo será una imagen <strong>ISO</strong> de aproximadamente 4-5 GB.</p>
+
+                <h2>Paso 2: Crear un USB Booteable</h2>
+                <p>Necesitas "quemar" la imagen ISO en el USB. Para ello puedes usar:</p>
+                <ul>
+                    <li><strong>Rufus</strong> (Windows): Ligero y muy popular</li>
+                    <li><strong>balenaEtcher</strong> (Windows/Mac/Linux): Interfaz muy sencilla</li>
+                    <li><strong>Startup Disk Creator</strong> (Ubuntu): Herramienta nativa</li>
+                </ul>
+                <p>Selecciona la imagen ISO descargada, elige tu USB y haz clic en "Grabar" o "Flash". Espera a que termine el proceso.</p>
+
+                <h2>Paso 3: Configurar la BIOS/UEFI</h2>
+                <p>Reinicia el ordenador y entra en la BIOS pulsando <strong>F2, F12, DEL o ESC</strong> (depende del fabricante). Una vez dentro:</p>
+                <ol>
+                    <li>Desactiva <strong>Secure Boot</strong> (opcional, pero recomendado)</li>
+                    <li>Cambia el orden de arranque para que el USB sea la primera opción</li>
+                    <li>Guarda los cambios y reinicia</li>
+                </ol>
+
+                <h2>Paso 4: Iniciar desde el USB</h2>
+                <p>Al reiniciar, verás el menú de Ubuntu con dos opciones:</p>
+                <ul>
+                    <li><strong>Try Ubuntu:</strong> Probar el sistema sin instalarlo (modo Live)</li>
+                    <li><strong>Install Ubuntu:</strong> Iniciar el instalador directamente</li>
+                </ul>
+                <p>Te recomendamos probarlo primero para asegurarte de que todo el hardware funciona correctamente.</p>
+
+                <h2>Paso 5: El Instalador</h2>
+                <p>El instalador de Ubuntu te guiará por estos pasos:</p>
+                <ol>
+                    <li><strong>Idioma:</strong> Selecciona español</li>
+                    <li><strong>Distribución del teclado:</strong> Elige tu idioma</li>
+                    <li><strong>Actualizaciones:</strong> Marca "Instalar actualizaciones" y "Instalar software de terceros" (códecs, drivers)</li>
+                    <li><strong>Tipo de instalación:</strong> Elige entre:
+                        <ul>
+                            <li><strong>Borrar disco e instalar Ubuntu:</strong> Instala Ubuntu como único sistema</li>
+                            <li><strong>Instalar junto a Windows:</strong> Dual boot, podrás elegir al arrancar</li>
+                            <li><strong>Más opciones:</strong> Particionado manual para usuarios avanzados</li>
+                        </ul>
+                    </li>
+                    <li><strong>Zona horaria:</strong> Selecciona tu ciudad</li>
+                    <li><strong>Usuario y contraseña:</strong> Crea tu cuenta</li>
+                </ol>
+
+                <h2>Paso 6: Reiniciar y Disfrutar</h2>
+                <p>Cuando termine la instalación (15-30 minutos), reinicia el ordenador, retira el USB y ¡listo! Ya tienes Ubuntu instalado. Al arrancar verás el gestor de arranque <strong>GRUB</strong> donde podrás elegir entre Ubuntu y Windows (si hiciste dual boot).</p>
+
+                <h2>Primeros Pasos Tras la Instalación</h2>
+                <ul>
+                    <li>Actualiza el sistema: <code>sudo apt update && sudo apt upgrade</code></li>
+                    <li>Instala tus programas favoritos desde el Centro de Software o con <code>apt</code></li>
+                    <li>Configura la privacidad y las actualizaciones automáticas</li>
+                    <li>Explora la tienda de aplicaciones <strong>Snap Store</strong></li>
+                </ul>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Vitvisor</h3>
+                <p style="color: #94A3B8; line-height: 1.6;">Tu plataforma de aprendizaje tecnológico.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Categorías</h3>
+                <ul>
+                    <li><a href="../index.html">Sistemas Operativos</a></li>
+                    <li><a href="../index.html">Ubuntu</a></li>
+                    <li><a href="../index.html">Programación</a></li>
+                    <li><a href="../index.html">Bases de Datos</a></li>
+                    <li><a href="../index.html">Redes</a></li>
+                    <li><a href="../index.html">Hardware</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../index.html#tutoriales">Tutoriales</a></li>
+                    <li><a href="../index.html#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Vitvisor. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
