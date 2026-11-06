@@ -5,41 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="ifqCv2GhUP1T9SNLvbV9kcZ8A8L9zwZdFFmaqcSiANM" />
     <title>HTML: Estructura Básica de una Página Web - Vitvisor</title>
-    <meta name="description" content="Aprende la estructura fundamental de HTML5: DOCTYPE, html, head, body y las etiquetas esenciales para crear tu primera página web desde cero.">
-    <meta name="keywords" content="HTML, estructura HTML, DOCTYPE, head, body, etiquetas HTML, primera página web, HTML5">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://sergiodepaz.github.io/vitvisore/entradas/estructura-basica-html.html">
-   <!-- PEGA ESTA LÍNEA -->
-<link rel="icon" href="https://i.postimg.cc/vBS3WzLT/android-chrome-512x512.png" type="image/png">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://sergiodepaz.github.io/vitvisore/entradas/estructura-basica-html.html">
-    <meta property="og:title" content="HTML: Estructura Básica de una Página Web - Vitvisor">
-    <meta property="og:description" content="Aprende la estructura fundamental de HTML5 y crea tu primera página web.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=800&h=400&fit=crop">
-    <meta property="og:locale" content="es_ES">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="HTML: Estructura Básica de una Página Web - Vitvisor">
-    <meta name="twitter:description" content="Aprende la estructura fundamental de HTML5 y crea tu primera página web.">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=800&h=400&fit=crop">
-    <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Article","headline":"HTML: Estructura Básica de una Página Web","image":"https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=800&h=400&fit=crop","author":{"@type":"Organization","name":"Vitvisor"},"publisher":{"@type":"Organization","name":"Vitvisor"},"datePublished":"2026-11-06","description":"Aprende la estructura fundamental de HTML5 y crea tu primera página web."}
-    </script>
+    <meta name="description" content="Aprende la estructura fundamental de HTML5: DOCTYPE, html, head, body y las etiquetas esenciales para crear tu primera página web.">
+    <link rel="icon" href="https://i.postimg.cc/vBS3WzLT/android-chrome-512x512.png" type="image/png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #333; line-height: 1.6; }
-        header { background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(14, 165, 233, 0.3); }
+        body { font-family: 'Segoe UI', sans-serif; background: #f8fafc; color: #333; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #38BDF8, #0EA5E9); color: #fff; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(14,165,233,0.3); }
         nav { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: white; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-        .nav-links a { color: white; text-decoration: none; transition: opacity 0.3s; }
+        .logo { font-size: 1.5rem; font-weight: bold; display: flex; align-items: center; text-decoration: none; color: #fff; }
+        .logo img { height: 40px; width: auto; border-radius: 8px; vertical-align: middle; margin-right: 0.5rem; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: #fff; text-decoration: none; transition: opacity 0.3s; }
         .nav-links a:hover { opacity: 0.8; }
-        .article-header { background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%); color: white; padding: 4rem 2rem 3rem; text-align: center; }
-        .article-header .category { display: inline-block; background: #F97316; color: white; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.9rem; margin-bottom: 1rem; }
+        .article-header { background: linear-gradient(135deg, #38BDF8, #0EA5E9); color: #fff; padding: 4rem 2rem 3rem; text-align: center; }
+        .article-header .category { display: inline-block; background: #F97316; color: #fff; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.9rem; margin-bottom: 1rem; }
         .article-header h1 { font-size: 2.5rem; margin-bottom: 1rem; max-width: 800px; margin-left: auto; margin-right: auto; }
         .article-header .meta { font-size: 0.95rem; opacity: 0.9; }
         .article-container { max-width: 800px; margin: 0 auto; padding: 3rem 2rem; }
         .article-image { width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 2rem; }
-        .article-content { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); }
+        .article-content { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); }
         .article-content p { margin-bottom: 1.5rem; color: #4a5568; font-size: 1.05rem; line-height: 1.8; }
         .article-content h2 { color: #0EA5E9; margin: 2rem 0 1rem; font-size: 1.8rem; border-left: 4px solid #F97316; padding-left: 1rem; }
         .article-content h3 { color: #0EA5E9; margin: 1.5rem 0 0.75rem; font-size: 1.3rem; }
@@ -51,7 +35,7 @@
         .article-content pre { background: #1E293B; color: #E2E8F0; padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; font-family: 'Courier New', monospace; font-size: 0.9rem; line-height: 1.6; }
         .back-button { display: inline-flex; align-items: center; gap: 0.5rem; color: #0EA5E9; text-decoration: none; font-weight: 600; margin-bottom: 2rem; transition: color 0.3s; }
         .back-button:hover { color: #F97316; }
-        footer { background: #1E293B; color: white; padding: 3rem 2rem 1rem; border-top: 4px solid #F97316; margin-top: 4rem; }
+        footer { background: #1E293B; color: #fff; padding: 3rem 2rem 1rem; border-top: 4px solid #F97316; margin-top: 4rem; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 2rem; }
         .footer-section h3 { margin-bottom: 1rem; color: #38BDF8; }
         .footer-section ul { list-style: none; }
@@ -65,11 +49,10 @@
 <body>
     <header>
         <nav>
-            <!-- PEGA ESTO -->
-<a href="index.html" class="logo">
-    <img src="https://i.postimg.cc/vBS3WzLT/android-chrome-512x512.png" alt="Logo Vitvisor">
-    <span>Vitvisor</span>
-</a>
+            <a href="../index.html" class="logo">
+                <img src="https://i.postimg.cc/vBS3WzLT/android-chrome-512x512.png" alt="Logo Vitvisor">
+                <span>Vitvisor</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="../index.html#tutoriales">Tutoriales</a></li>
@@ -81,7 +64,7 @@
         <div class="article-header">
             <span class="category">Lenguajes de Marcas</span>
             <h1>HTML: Estructura Básica de una Página Web</h1>
-            <div class="meta"><time datetime="2026-11-06">6 de noviembre de 2026</time> · Lectura de 8 min</div>
+            <div class="meta"><time datetime="2026-11-06">6 de noviembre de 2026</time> · Lectura de 3 min</div>
         </div>
 
         <div class="article-container">
@@ -89,16 +72,14 @@
             <img src="https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=800&h=400&fit=crop" alt="Estructura HTML" class="article-image">
             
             <div class="article-content">
-                <p><strong>HTML (HyperText Markup Language)</strong> es el lenguaje estándar para crear páginas web. Define la estructura y el contenido de una página mediante etiquetas que el navegador interpreta y muestra al usuario. En este tutorial aprenderás la estructura básica de un documento HTML5.</p>
+                <p><strong>HTML (HyperText Markup Language)</strong> es el lenguaje estándar para crear páginas web. Define la estructura y el contenido de una página mediante etiquetas que el navegador interpreta y muestra al usuario.</p>
                 
                 <h2>Estructura Fundamental de HTML5</h2>
-                <p>Todo documento HTML sigue una estructura básica compuesta por varias etiquetas esenciales. Aquí tienes el esqueleto mínimo:</p>
-
-                <pre>&lt;!DOCTYPE html&gt;
+                <p>Todo documento HTML sigue una estructura básica compuesta por varias etiquetas esenciales:</p>
+<pre>&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
     &lt;title&gt;Mi Primera Página Web&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
@@ -108,52 +89,32 @@
 &lt;/html&gt;</pre>
 
                 <h2>Análisis de Cada Parte</h2>
-                
                 <h3>1. DOCTYPE</h3>
-                <p><code>&lt;!DOCTYPE html&gt;</code> le indica al navegador que este documento es HTML5. Siempre va en la primera línea y no es una etiqueta HTML, sino una declaración.</p>
+                <p><code>&lt;!DOCTYPE html&gt;</code> le indica al navegador que este documento es HTML5. Siempre va en la primera línea.</p>
 
                 <h3>2. Etiqueta html</h3>
-                <p><code>&lt;html lang="es"&gt;</code> es el elemento raíz que contiene todo el documento. El atributo <code>lang="es"</code> indica que el contenido está en español (importante para accesibilidad y SEO).</p>
+                <p><code>&lt;html lang="es"&gt;</code> es el elemento raíz que contiene todo el documento. El atributo <code>lang</code> indica el idioma del contenido.</p>
 
                 <h3>3. Head (Cabecera)</h3>
-                <p>La etiqueta <code>&lt;head&gt;</code> contiene metadatos sobre el documento que no se muestran directamente en la página:</p>
+                <p>La etiqueta <code>&lt;head&gt;</code> contiene metadatos que no se muestran directamente en la página:</p>
                 <ul>
-                    <li><code>&lt;meta charset="UTF-8"&gt;</code> - Define la codificación de caracteres (permite acentos, ñ, etc.)</li>
-                    <li><code>&lt;meta name="viewport"&gt;</code> - Hace que la página sea responsive en móviles</li>
+                    <li><code>&lt;meta charset="UTF-8"&gt;</code> - Define la codificación de caracteres</li>
+                    <li><code>&lt;meta name="viewport"&gt;</code> - Hace que la página sea responsive</li>
                     <li><code>&lt;title&gt;</code> - El título que aparece en la pestaña del navegador</li>
-                    <li><code>&lt;meta name="description"&gt;</code> - Descripción para SEO</li>
-                    <li><code>&lt;link&gt;</code> - Para enlazar archivos CSS externos</li>
                 </ul>
 
                 <h3>4. Body (Cuerpo)</h3>
-                <p>La etiqueta <code>&lt;body&gt;</code> contiene todo el contenido visible de la página: textos, imágenes, enlaces, formularios, etc. Todo lo que el usuario ve está dentro de body.</p>
+                <p>La etiqueta <code>&lt;body&gt;</code> contiene todo el contenido visible de la página: textos, imágenes, enlaces, etc.</p>
 
                 <h2>Etiquetas Básicas Esenciales</h2>
                 <ul>
-                    <li><code>&lt;h1&gt; a &lt;h6&gt;</code> - Títulos (h1 es el más importante, h6 el menos)</li>
+                    <li><code>&lt;h1&gt; a &lt;h6&gt;</code> - Títulos (h1 es el más importante)</li>
                     <li><code>&lt;p&gt;</code> - Párrafos de texto</li>
                     <li><code>&lt;a href=""&gt;</code> - Enlaces a otras páginas</li>
                     <li><code>&lt;img src="" alt=""&gt;</code> - Imágenes</li>
                     <li><code>&lt;ul&gt; y &lt;li&gt;</code> - Listas desordenadas</li>
-                    <li><code>&lt;ol&gt; y &lt;li&gt;</code> - Listas ordenadas</li>
                     <li><code>&lt;div&gt;</code> - Contenedor genérico</li>
-                    <li><code>&lt;span&gt;</code> - Contenedor en línea</li>
                 </ul>
-
-                <h2>Ejemplo Completo</h2>
-                <pre>&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;Mi Web&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Bienvenido a mi web&lt;/h1&gt;
-    &lt;p&gt;Este es un párrafo de ejemplo.&lt;/p&gt;
-    &lt;a href="https://google.com"&gt;Ir a Google&lt;/a&gt;
-    &lt;img src="foto.jpg" alt="Mi foto"&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
 
                 <h2>Buenas Prácticas</h2>
                 <ul>
@@ -161,8 +122,7 @@
                     <li>Define el idioma con <code>lang</code></li>
                     <li>Usa un solo <code>&lt;h1&gt;</code> por página (para SEO)</li>
                     <li>Añade <code>alt</code> a todas las imágenes (accesibilidad)</li>
-                    <li>Indentar el código para que sea legible</li>
-                    <li>Cerrar siempre todas las etiquetas</li>
+                    <li>Cierra siempre todas las etiquetas</li>
                 </ul>
 
                 <p>Con esta estructura básica ya puedes crear tu primera página web. En los próximos tutoriales aprenderás a añadir estilos con CSS y interactividad con JavaScript.</p>
