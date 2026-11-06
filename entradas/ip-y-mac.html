@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="ifqCv2GhUP1T9SNLvbV9kcZ8A8L9zwZdFFmaqcSiANM" />
+    <title>¿Qué son la IP y la MAC? Identificadores de Red - Vitvisor</title>
+    <meta name="description" content="Entiende la diferencia entre dirección IP y dirección MAC, cómo funcionan y por qué son esenciales en las redes informáticas.">
+    <meta name="keywords" content="dirección IP, dirección MAC, red, IPv4, IPv6, identificador, networking, TCP/IP">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sergiodepaz.github.io/vitvisore/entradas/ip-y-mac.html">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📘</text></svg>">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sergiodepaz.github.io/vitvisore/entradas/ip-y-mac.html">
+    <meta property="og:title" content="¿Qué son la IP y la MAC? Identificadores de Red - Vitvisor">
+    <meta property="og:description" content="Entiende la diferencia entre dirección IP y MAC.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="¿Qué son la IP y la MAC? Identificadores de Red - Vitvisor">
+    <meta name="twitter:description" content="Entiende la diferencia entre dirección IP y MAC.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"¿Qué son la IP y la MAC? Identificadores de Red","image":"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop","author":{"@type":"Organization","name":"Vitvisor"},"publisher":{"@type":"Organization","name":"Vitvisor"},"datePublished":"2026-11-06","description":"Entiende la diferencia entre dirección IP y MAC."}
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #333; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(14, 165, 233, 0.3); }
+        nav { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: white; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; transition: opacity 0.3s; }
+        .nav-links a:hover { opacity: 0.8; }
+        .article-header { background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%); color: white; padding: 4rem 2rem 3rem; text-align: center; }
+        .article-header .category { display: inline-block; background: #F97316; color: white; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.9rem; margin-bottom: 1rem; }
+        .article-header h1 { font-size: 2.5rem; margin-bottom: 1rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .article-header .meta { font-size: 0.95rem; opacity: 0.9; }
+        .article-container { max-width: 800px; margin: 0 auto; padding: 3rem 2rem; }
+        .article-image { width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 2rem; }
+        .article-content { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); }
+        .article-content p { margin-bottom: 1.5rem; color: #4a5568; font-size: 1.05rem; line-height: 1.8; }
+        .article-content h2 { color: #0EA5E9; margin: 2rem 0 1rem; font-size: 1.8rem; border-left: 4px solid #F97316; padding-left: 1rem; }
+        .article-content h3 { color: #0EA5E9; margin: 1.5rem 0 0.75rem; font-size: 1.3rem; }
+        .article-content ul { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+        .article-content li { margin-bottom: 0.5rem; color: #4a5568; }
+        .article-content li::marker { color: #F97316; }
+        .article-content strong { color: #2d3748; }
+        .article-content code { background: #1E293B; color: #38BDF8; padding: 0.2rem 0.5rem; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.95rem; }
+        .back-button { display: inline-flex; align-items: center; gap: 0.5rem; color: #0EA5E9; text-decoration: none; font-weight: 600; margin-bottom: 2rem; transition: color 0.3s; }
+        .back-button:hover { color: #F97316; }
+        footer { background: #1E293B; color: white; padding: 3rem 2rem 1rem; border-top: 4px solid #F97316; margin-top: 4rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 2rem; }
+        .footer-section h3 { margin-bottom: 1rem; color: #38BDF8; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.5rem; }
+        .footer-section a { color: #94A3B8; text-decoration: none; transition: all 0.3s; }
+        .footer-section a:hover { color: #F97316; padding-left: 5px; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid #334155; color: #94A3B8; }
+        @media (max-width: 768px) { .article-header h1 { font-size: 1.8rem; } .article-image { height: 250px; } .nav-links { gap: 1rem; font-size: 0.9rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo"><span>📘</span><span>Vitvisor</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../index.html#tutoriales">Tutoriales</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <article>
+        <div class="article-header">
+            <span class="category">Redes</span>
+            <h1>¿Qué son la IP y la MAC? Identificadores de Red</h1>
+            <div class="meta"><time datetime="2026-11-06">6 de noviembre de 2026</time> · Lectura de 8 min</div>
+        </div>
+
+        <div class="article-container">
+            <a href="../index.html" class="back-button">← Volver a tutoriales</a>
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop" alt="Dirección IP y MAC" class="article-image">
+            
+            <div class="article-content">
+                <p>En el mundo de las redes informáticas, cada dispositivo necesita ser identificado de forma única para poder comunicarse con otros. Para ello existen dos tipos de direcciones fundamentales: la <strong>dirección IP</strong> y la <strong>dirección MAC</strong>. Aunque ambas sirven para identificar dispositivos, funcionan de manera muy diferente y se complementan entre sí.</p>
+                
+                <h2>¿Qué es la Dirección MAC?</h2>
+                <p>La <strong>dirección MAC (Media Access Control)</strong> es un identificador único y permanente asignado por el fabricante a cada tarjeta de red (NIC). Es como el "DNI físico" del dispositivo: no cambia nunca (salvo que se modifique por software).</p>
+
+                <h3>Características de la MAC:</h3>
+                <ul>
+                    <li><strong>Formato:</strong> 6 pares de números hexadecimales separados por dos puntos o guiones</li>
+                    <li><strong>Ejemplo:</strong> <code>00:1A:2B:3C:4D:5E</code></li>
+                    <li><strong>Capa:</strong> Funciona en la Capa 2 (Enlace de datos) del modelo OSI</li>
+                    <li><strong>Ámbito:</strong> Solo es útil dentro de la red local (LAN)</li>
+                    <li><strong>Permanente:</strong> Grabada en el hardware de fábrica</li>
+                </ul>
+
+                <h3>¿Para qué sirve la MAC?</h3>
+                <ul>
+                    <li>Identificar dispositivos dentro de una red local</li>
+                    <li>Filtrar acceso en routers (control parental, seguridad)</li>
+                    <li>Asignar IPs fijas mediante DHCP</li>
+                    <li>Evitar robos de dispositivos (bloqueo por MAC)</li>
+                </ul>
+
+                <h2>¿Qué es la Dirección IP?</h2>
+                <p>La <strong>dirección IP (Internet Protocol)</strong> es un identificador lógico asignado a cada dispositivo conectado a una red. A diferencia de la MAC, la IP puede cambiar y depende de la red a la que estés conectado.</p>
+
+                <h3>Tipos de Direcciones IP</h3>
+                
+                <h3>IPv4</h3>
+                <ul>
+                    <li><strong>Formato:</strong> 4 números de 0 a 255 separados por puntos</li>
+                    <li><strong>Ejemplo:</strong> <code>192.168.1.100</code></li>
+                    <li><strong>Total de direcciones:</strong> 4.300 millones (ya agotadas)</li>
+                    <li><strong>Uso:</strong> Aún mayoritario en redes domésticas</li>
+                </ul>
+
+                <h3>IPv6</h3>
+                <ul>
+                    <li><strong>Formato:</strong> 8 grupos de 4 caracteres hexadecimales</li>
+                    <li><strong>Ejemplo:</strong> <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+                    <li><strong>Total de direcciones:</strong> 340 sextillones (prácticamente infinitas)</li>
+                    <li><strong>Uso:</strong> Implementación gradual en todo el mundo</li>
+                </ul>
+
+                <h3>IP Pública vs IP Privada</h3>
+                <ul>
+                    <li><strong>IP Pública:</strong> La que te identifica en Internet. Asignada por tu proveedor (ISP). Es única en todo el mundo.</li>
+                    <li><strong>IP Privada:</strong> La que usas dentro de tu red local (casa, oficina). El router asigna IPs privadas a cada dispositivo.</li>
+                </ul>
+
+                <h3>IP Fija vs IP Dinámica</h3>
+                <ul>
+                    <li><strong>IP Fija (Estática):</strong> No cambia. Se configura manualmente. Usada en servidores.</li>
+                    <li><strong>IP Dinámica:</strong> Cambia periódicamente. Asignada automáticamente por DHCP. La más común en hogares.</li>
+                </ul>
+
+                <h2>Diferencias entre IP y MAC</h2>
+                <ul>
+                    <li><strong>MAC:</strong> Física, permanente, capa 2, ámbito local</li>
+                    <li><strong>IP:</strong> Lógica, puede cambiar, capa 3, ámbito global</li>
+                    <li><strong>Analogía:</strong> La MAC es como tu DNI (no cambia), la IP es como tu dirección postal (puede cambiar si te mudas)</li>
+                </ul>
+
+                <h2>¿Cómo Ver tu IP y MAC?</h2>
+                
+                <h3>En Windows:</h3>
+                <ul>
+                    <li>Abre CMD y escribe <code>ipconfig /all</code></li>
+                    <li>Verás la "Dirección IPv4" y la "Dirección física" (MAC)</li>
+                </ul>
+
+                <h3>En Ubuntu/Linux:</h3>
+                <ul>
+                    <li>Abre la terminal y escribe <code>ip a</code> o <code>ifconfig</code></li>
+                    <li>Verás la "inet" (IP) y "ether" (MAC)</li>
+                </ul>
+
+                <h3>En Mac:</h3>
+                <ul>
+                    <li>Ve a Preferencias del Sistema → Red → Avanzado → Hardware</li>
+                    <li>O en terminal: <code>ifconfig</code></li>
+                </ul>
+
+                <h2>¿Por qué son Importantes?</h2>
+                <p>Sin direcciones IP y MAC, Internet y las redes locales no podrían funcionar. La MAC permite que los dispositivos se comuniquen dentro de una red local, mientras que la IP permite que esa comunicación se extienda a través de múltiples redes hasta llegar a cualquier rincón del mundo. Juntas forman la base del modelo TCP/IP que hace posible Internet tal como lo conocemos.</p>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Vitvisor</h3>
+                <p style="color: #94A3B8; line-height: 1.6;">Tu plataforma de aprendizaje tecnológico.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Categorías</h3>
+                <ul>
+                    <li><a href="../index.html">Sistemas Operativos</a></li>
+                    <li><a href="../index.html">Programación</a></li>
+                    <li><a href="../index.html">Lenguajes de Marcas</a></li>
+                    <li><a href="../index.html">Bases de Datos</a></li>
+                    <li><a href="../index.html">Redes</a></li>
+                    <li><a href="../index.html">Hardware</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../index.html#tutoriales">Tutoriales</a></li>
+                    <li><a href="../index.html#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Vitvisor. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
