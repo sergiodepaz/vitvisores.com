@@ -3,61 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="ifqCv2GhUP1T9SNLvbV9kcZ8A8L9zwZdFFmaqcSiANM" />
     <title>¿Qué es la CPU? El Cerebro del Ordenador - Vitvisor</title>
-    <meta name="description" content="Entiende el funcionamiento de la Unidad Central de Procesamiento (CPU), sus componentes y cómo afecta al rendimiento de tu ordenador.">
-    <meta name="keywords" content="CPU, procesador, Intel, AMD, ALU, núcleos, GHz, hardware">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://sergiodepaz.github.io/vitvisore/entradas/cpu.html">
-    <!-- PEGA ESTA LÍNEA -->
-<link rel="icon" href="https://i.postimg.cc/vBS3WzLT/android-chrome-512x512.png" type="image/png">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://sergiodepaz.github.io/vitvisore/entradas/cpu.html">
-    <meta property="og:title" content="¿Qué es la CPU? El Cerebro del Ordenador - Vitvisor">
-    <meta property="og:description" content="Entiende el funcionamiento de la CPU, sus componentes y cómo afecta al rendimiento.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop">
-    <meta property="og:locale" content="es_ES">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="¿Qué es la CPU? El Cerebro del Ordenador - Vitvisor">
-    <meta name="twitter:description" content="Entiende el funcionamiento de la CPU, sus componentes y cómo afecta al rendimiento.">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "¿Qué es la CPU? El Cerebro del Ordenador",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop",
-      "author": {"@type": "Organization", "name": "Vitvisor"},
-      "publisher": {"@type": "Organization", "name": "Vitvisor"},
-      "datePublished": "2026-11-06",
-      "description": "Entiende el funcionamiento de la Unidad Central de Procesamiento (CPU), sus componentes y cómo afecta al rendimiento."
-    }
-    </script>
+    <meta name="description" content="Entiende el funcionamiento de la Unidad Central de Procesamiento (CPU), sus componentes y cómo afecta al rendimiento.">
+    <link rel="icon" href="https://i.postimg.cc/vBS3WzLT/android-chrome-512x512.png" type="image/png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #333; line-height: 1.6; }
-        header { background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(14, 165, 233, 0.3); }
+        body { font-family: 'Segoe UI', sans-serif; background: #f8fafc; color: #333; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #38BDF8, #0EA5E9); color: #fff; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(14,165,233,0.3); }
         nav { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: white; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-        .nav-links a { color: white; text-decoration: none; transition: opacity 0.3s; }
+        .logo { font-size: 1.5rem; font-weight: bold; display: flex; align-items: center; text-decoration: none; color: #fff; }
+        .logo img { height: 40px; width: auto; border-radius: 8px; vertical-align: middle; margin-right: 0.5rem; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: #fff; text-decoration: none; transition: opacity 0.3s; }
         .nav-links a:hover { opacity: 0.8; }
-        .article-header { background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%); color: white; padding: 4rem 2rem 3rem; text-align: center; }
-        .article-header .category { display: inline-block; background: #F97316; color: white; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.9rem; margin-bottom: 1rem; }
+        .article-header { background: linear-gradient(135deg, #38BDF8, #0EA5E9); color: #fff; padding: 4rem 2rem 3rem; text-align: center; }
+        .article-header .category { display: inline-block; background: #F97316; color: #fff; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.9rem; margin-bottom: 1rem; }
         .article-header h1 { font-size: 2.5rem; margin-bottom: 1rem; max-width: 800px; margin-left: auto; margin-right: auto; }
         .article-header .meta { font-size: 0.95rem; opacity: 0.9; }
         .article-container { max-width: 800px; margin: 0 auto; padding: 3rem 2rem; }
         .article-image { width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 2rem; }
-        .article-content { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); }
+        .article-content { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); }
         .article-content p { margin-bottom: 1.5rem; color: #4a5568; font-size: 1.05rem; line-height: 1.8; }
         .article-content h2 { color: #0EA5E9; margin: 2rem 0 1rem; font-size: 1.8rem; border-left: 4px solid #F97316; padding-left: 1rem; }
-        .article-content h3 { color: #0EA5E9; margin: 1.5rem 0 0.75rem; font-size: 1.3rem; }
         .article-content ul { margin-left: 1.5rem; margin-bottom: 1.5rem; }
         .article-content li { margin-bottom: 0.5rem; color: #4a5568; }
         .article-content li::marker { color: #F97316; }
         .article-content strong { color: #2d3748; }
         .back-button { display: inline-flex; align-items: center; gap: 0.5rem; color: #0EA5E9; text-decoration: none; font-weight: 600; margin-bottom: 2rem; transition: color 0.3s; }
         .back-button:hover { color: #F97316; }
-        footer { background: #1E293B; color: white; padding: 3rem 2rem 1rem; border-top: 4px solid #F97316; margin-top: 4rem; }
+        footer { background: #1E293B; color: #fff; padding: 3rem 2rem 1rem; border-top: 4px solid #F97316; margin-top: 4rem; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 2rem; }
         .footer-section h3 { margin-bottom: 1rem; color: #38BDF8; }
         .footer-section ul { list-style: none; }
@@ -65,21 +40,16 @@
         .footer-section a { color: #94A3B8; text-decoration: none; transition: all 0.3s; }
         .footer-section a:hover { color: #F97316; padding-left: 5px; }
         .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid #334155; color: #94A3B8; }
-        @media (max-width: 768px) {
-            .article-header h1 { font-size: 1.8rem; }
-            .article-image { height: 250px; }
-            .nav-links { gap: 1rem; font-size: 0.9rem; }
-        }
+        @media (max-width: 768px) { .article-header h1 { font-size: 1.8rem; } .article-image { height: 250px; } .nav-links { gap: 1rem; font-size: 0.9rem; } }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <!-- PEGA ESTO -->
-<a href="index.html" class="logo">
-    <img src="https://i.postimg.cc/vBS3WzLT/android-chrome-512x512.png" alt="Logo Vitvisor">
-    <span>Vitvisor</span>
-</a>
+            <a href="../index.html" class="logo">
+                <img src="https://i.postimg.cc/vBS3WzLT/android-chrome-512x512.png" alt="Logo Vitvisor">
+                <span>Vitvisor</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="../index.html#tutoriales">Tutoriales</a></li>
@@ -91,53 +61,38 @@
         <div class="article-header">
             <span class="category">Hardware</span>
             <h1>¿Qué es la CPU? El Cerebro del Ordenador</h1>
-            <div class="meta"><time datetime="2026-11-06">6 de noviembre de 2026</time> · Lectura de 7 min</div>
+            <div class="meta"><time datetime="2026-11-06">6 de noviembre de 2026</time> · Lectura de 3 min</div>
         </div>
 
         <div class="article-container">
             <a href="../index.html" class="back-button">← Volver a tutoriales</a>
-            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop" alt="CPU - Procesador de ordenador" class="article-image">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop" alt="CPU Procesador" class="article-image">
             
             <div class="article-content">
-                <p>La <strong>Unidad Central de Procesamiento (CPU)</strong> es el componente principal de una computadora que ejecuta instrucciones de programas y procesa datos. Es considerada el "cerebro" del sistema, ya que coordina todas las operaciones que realiza el ordenador.</p>
+                <p>La <strong>Unidad Central de Procesamiento (CPU)</strong> es el componente principal de una computadora que ejecuta instrucciones de programas y procesa datos. Es considerada el "cerebro" del sistema.</p>
                 
                 <h2>Componentes Principales</h2>
                 <ul>
-                    <li><strong>ALU (Unidad Aritmético-Lógica):</strong> Realiza operaciones matemáticas (suma, resta, multiplicación) y lógicas (AND, OR, NOT)</li>
-                    <li><strong>Unidad de Control (CU):</strong> Coordina y dirige el funcionamiento del procesador, interpretando las instrucciones</li>
-                    <li><strong>Registros:</strong> Almacenamiento temporal ultrarrápido dentro del propio procesador</li>
-                    <li><strong>Cache (L1, L2, L3):</strong> Memoria rápida para datos usados frecuentemente</li>
+                    <li><strong>ALU (Unidad Aritmético-Lógica):</strong> Realiza operaciones matemáticas y lógicas</li>
+                    <li><strong>Unidad de Control:</strong> Coordina y dirige el funcionamiento del procesador</li>
+                    <li><strong>Registros y Caché:</strong> Almacenamiento temporal ultrarrápido dentro del chip</li>
                 </ul>
 
                 <h2>Características Importantes</h2>
-                <h3>Frecuencia de reloj</h3>
-                <p>Medida en <strong>GHz (Gigahercios)</strong>, indica cuántas operaciones puede realizar por segundo. Un procesador a 3.5 GHz realiza 3.500 millones de ciclos por segundo.</p>
-
-                <h3>Núcleos</h3>
-                <p>Las CPUs modernas tienen múltiples núcleos que permiten ejecutar varias tareas simultáneamente:</p>
                 <ul>
-                    <li><strong>Dual-core:</strong> 2 núcleos - Uso básico</li>
-                    <li><strong>Quad-core:</strong> 4 núcleos - Uso estándar</li>
-                    <li><strong>Hexa-core / Octa-core:</strong> 6-8 núcleos - Gaming y edición</li>
-                    <li><strong>Más de 16 núcleos:</strong> Workstations y servidores</li>
+                    <li><strong>Frecuencia de reloj:</strong> Medida en GHz, indica cuántas operaciones puede realizar por segundo</li>
+                    <li><strong>Núcleos:</strong> Las CPUs modernas tienen múltiples núcleos (dual-core, quad-core, etc.) para multitarea</li>
+                    <li><strong>Hilos:</strong> Tecnologías como Hyper-Threading permiten ejecutar múltiples procesos simultáneos por núcleo</li>
                 </ul>
-
-                <h3>Hilos de ejecución</h3>
-                <p>Tecnologías como <strong>Hyper-Threading (Intel)</strong> o <strong>SMT (AMD)</strong> permiten que cada núcleo ejecute múltiples hilos simultáneamente, mejorando el rendimiento en multitarea.</p>
-
-                <h3>TDP (Potencia de Diseño Térmico)</h3>
-                <p>Indica el consumo energético y el calor generado. Un TDP más alto generalmente significa más rendimiento pero también más consumo y calor.</p>
 
                 <h2>Fabricantes Principales</h2>
                 <ul>
-                    <li><strong>Intel:</strong> Core i3, i5, i7, i9 - Líder histórico en CPUs de escritorio</li>
-                    <li><strong>AMD:</strong> Ryzen 3, 5, 7, 9 - Competidor fuerte con excelente relación calidad-precio</li>
-                    <li><strong>ARM:</strong> Procesadores para móviles, tablets y ahora también para ordenadores (Apple M1/M2/M3)</li>
-                    <li><strong>Apple Silicon:</strong> Chips M1, M2, M3, M4 - Arquitectura ARM de alto rendimiento</li>
+                    <li><strong>Intel:</strong> Famosa por sus Core i3, i5, i7 e i9</li>
+                    <li><strong>AMD:</strong> Competidor directo con su línea Ryzen</li>
+                    <li><strong>ARM / Apple:</strong> Dominan el mercado móvil y los nuevos Mac con chips M1, M2, M3</li>
                 </ul>
 
-                <h2>¿Cómo elegir una CPU?</h2>
-                <p>La elección depende del uso: para ofimática basta un i3/Ryzen 3, para gaming un i5/Ryzen 5, para edición de video un i7/Ryzen 7, y para trabajo profesional un i9/Ryzen 9 o Threadripper.</p>
+                <p>Elegir una buena CPU es fundamental, ya que determina la velocidad y capacidad de respuesta general de tu ordenador.</p>
             </div>
         </div>
     </article>
@@ -153,6 +108,7 @@
                 <ul>
                     <li><a href="../index.html">Sistemas Operativos</a></li>
                     <li><a href="../index.html">Programación</a></li>
+                    <li><a href="../index.html">Lenguajes de Marcas</a></li>
                     <li><a href="../index.html">Bases de Datos</a></li>
                     <li><a href="../index.html">Redes</a></li>
                     <li><a href="../index.html">Hardware</a></li>
@@ -163,6 +119,7 @@
                 <ul>
                     <li><a href="../index.html">Inicio</a></li>
                     <li><a href="../index.html#tutoriales">Tutoriales</a></li>
+                    <li><a href="../index.html#contacto">Contacto</a></li>
                 </ul>
             </div>
         </div>
