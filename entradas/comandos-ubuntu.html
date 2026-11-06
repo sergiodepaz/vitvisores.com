@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="ifqCv2GhUP1T9SNLvbV9kcZ8A8L9zwZdFFmaqcSiANM" />
+    <title>Comandos Básicos de la Terminal en Ubuntu - Vitvisor</title>
+    <meta name="description" content="Aprende los comandos esenciales de la terminal de Ubuntu para navegar, gestionar archivos y administrar el sistema. Guía para principiantes.">
+    <meta name="keywords" content="comandos Ubuntu, terminal Linux, bash, apt, ls, cd, mkdir, sudo, chmod">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sergiodepaz.github.io/vitvisore/entradas/comandos-ubuntu.html">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📘</text></svg>">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sergiodepaz.github.io/vitvisore/entradas/comandos-ubuntu.html">
+    <meta property="og:title" content="Comandos Básicos de la Terminal en Ubuntu - Vitvisor">
+    <meta property="og:description" content="Aprende los comandos esenciales de la terminal de Ubuntu.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=400&fit=crop">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Comandos Básicos de la Terminal en Ubuntu - Vitvisor">
+    <meta name="twitter:description" content="Aprende los comandos esenciales de la terminal de Ubuntu.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=400&fit=crop">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"Comandos Básicos de la Terminal en Ubuntu","image":"https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=400&fit=crop","author":{"@type":"Organization","name":"Vitvisor"},"publisher":{"@type":"Organization","name":"Vitvisor"},"datePublished":"2026-11-06","description":"Aprende los comandos esenciales de la terminal de Ubuntu."}
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #333; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(14, 165, 233, 0.3); }
+        nav { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: white; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; transition: opacity 0.3s; }
+        .nav-links a:hover { opacity: 0.8; }
+        .article-header { background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%); color: white; padding: 4rem 2rem 3rem; text-align: center; }
+        .article-header .category { display: inline-block; background: #F97316; color: white; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.9rem; margin-bottom: 1rem; }
+        .article-header h1 { font-size: 2.5rem; margin-bottom: 1rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .article-header .meta { font-size: 0.95rem; opacity: 0.9; }
+        .article-container { max-width: 800px; margin: 0 auto; padding: 3rem 2rem; }
+        .article-image { width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 2rem; }
+        .article-content { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); }
+        .article-content p { margin-bottom: 1.5rem; color: #4a5568; font-size: 1.05rem; line-height: 1.8; }
+        .article-content h2 { color: #0EA5E9; margin: 2rem 0 1rem; font-size: 1.8rem; border-left: 4px solid #F97316; padding-left: 1rem; }
+        .article-content h3 { color: #0EA5E9; margin: 1.5rem 0 0.75rem; font-size: 1.3rem; }
+        .article-content ul { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+        .article-content li { margin-bottom: 0.5rem; color: #4a5568; }
+        .article-content li::marker { color: #F97316; }
+        .article-content strong { color: #2d3748; }
+        .article-content code { background: #1E293B; color: #38BDF8; padding: 0.2rem 0.5rem; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.95rem; }
+        .back-button { display: inline-flex; align-items: center; gap: 0.5rem; color: #0EA5E9; text-decoration: none; font-weight: 600; margin-bottom: 2rem; transition: color 0.3s; }
+        .back-button:hover { color: #F97316; }
+        footer { background: #1E293B; color: white; padding: 3rem 2rem 1rem; border-top: 4px solid #F97316; margin-top: 4rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 2rem; }
+        .footer-section h3 { margin-bottom: 1rem; color: #38BDF8; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.5rem; }
+        .footer-section a { color: #94A3B8; text-decoration: none; transition: all 0.3s; }
+        .footer-section a:hover { color: #F97316; padding-left: 5px; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid #334155; color: #94A3B8; }
+        @media (max-width: 768px) { .article-header h1 { font-size: 1.8rem; } .article-image { height: 250px; } .nav-links { gap: 1rem; font-size: 0.9rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo"><span>📘</span><span>Vitvisor</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../index.html#tutoriales">Tutoriales</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <article>
+        <div class="article-header">
+            <span class="category">Ubuntu</span>
+            <h1>Comandos Básicos de la Terminal en Ubuntu</h1>
+            <div class="meta"><time datetime="2026-11-06">6 de noviembre de 2026</time> · Lectura de 8 min</div>
+        </div>
+
+        <div class="article-container">
+            <a href="../index.html" class="back-button">← Volver a tutoriales</a>
+            <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=400&fit=crop" alt="Terminal de Ubuntu" class="article-image">
+            
+            <div class="article-content">
+                <p>La <strong>terminal</strong> (también llamada consola o línea de comandos) es una de las herramientas más potentes de Ubuntu. Aunque al principio puede parecer intimidante, dominar los comandos básicos te permitirá gestionar el sistema de forma mucho más rápida y eficiente que con la interfaz gráfica.</p>
+                
+                <h2>¿Cómo Abrir la Terminal?</h2>
+                <p>Puedes abrir la terminal de varias formas:</p>
+                <ul>
+                    <li>Atajo de teclado: <code>Ctrl + Alt + T</code></li>
+                    <li>Buscando "Terminal" en el menú de aplicaciones</li>
+                    <li>Clic derecho en el escritorio → "Abrir terminal"</li>
+                </ul>
+
+                <h2>Comandos de Navegación</h2>
+                <ul>
+                    <li><code>pwd</code> - Muestra la ruta de la carpeta actual</li>
+                    <li><code>ls</code> - Lista los archivos y carpetas del directorio actual</li>
+                    <li><code>ls -la</code> - Lista todo incluyendo archivos ocultos y permisos</li>
+                    <li><code>cd carpeta</code> - Entra en una carpeta</li>
+                    <li><code>cd ..</code> - Sube un nivel en la jerarquía</li>
+                    <li><code>cd ~</code> - Vuelve a tu carpeta personal</li>
+                </ul>
+
+                <h2>Gestión de Archivos y Carpetas</h2>
+                <ul>
+                    <li><code>mkdir nombre</code> - Crea una nueva carpeta</li>
+                    <li><code>touch archivo.txt</code> - Crea un archivo vacío</li>
+                    <li><code>cp origen destino</code> - Copia archivos o carpetas</li>
+                    <li><code>mv origen destino</code> - Mueve o renombra archivos</li>
+                    <li><code>rm archivo</code> - Elimina un archivo</li>
+                    <li><code>rm -r carpeta</code> - Elimina una carpeta y su contenido</li>
+                </ul>
+
+                <h2>Gestión de Paquetes con APT</h2>
+                <p>APT es el gestor de paquetes de Ubuntu. Estos son los comandos más usados:</p>
+                <ul>
+                    <li><code>sudo apt update</code> - Actualiza la lista de paquetes disponibles</li>
+                    <li><code>sudo apt upgrade</code> - Instala las actualizaciones disponibles</li>
+                    <li><code>sudo apt install nombre_paquete</code> - Instala un programa</li>
+                    <li><code>sudo apt remove nombre_paquete</code> - Desinstala un programa</li>
+                    <li><code>sudo apt autoremove</code> - Limpia paquetes no necesarios</li>
+                </ul>
+
+                <h2>Permisos y Usuario</h2>
+                <ul>
+                    <li><code>sudo comando</code> - Ejecuta un comando como administrador (root)</li>
+                    <li><code>whoami</code> - Muestra el usuario actual</li>
+                    <li><code>chmod permisos archivo</code> - Cambia los permisos de un archivo</li>
+                    <li><code>chown usuario archivo</code> - Cambia el propietario de un archivo</li>
+                </ul>
+
+                <h2>Información del Sistema</h2>
+                <ul>
+                    <li><code>uname -a</code> - Muestra información del kernel</li>
+                    <li><code>df -h</code> - Espacio disponible en los discos</li>
+                    <li><code>free -h</code> - Memoria RAM disponible</li>
+                    <li><code>top</code> o <code>htop</code> - Procesos en ejecución</li>
+                    <li><code>ip a</code> - Muestra las direcciones IP de red</li>
+                </ul>
+
+                <h2>Trucos Útiles</h2>
+                <ul>
+                    <li><code>clear</code> o <code>Ctrl + L</code> - Limpia la pantalla</li>
+                    <li><code>historial</code> o flecha arriba - Muestra comandos anteriores</li>
+                    <li><code>Tab</code> - Autocompleta nombres de archivos y comandos</li>
+                    <li><code>Ctrl + C</code> - Cancela el comando en ejecución</li>
+                    <li><code>man comando</code> - Muestra el manual de ayuda de un comando</li>
+                </ul>
+
+                <p>Con estos comandos básicos ya puedes desenvolverte con soltura en Ubuntu. La práctica es la clave: úsalos a diario y pronto te resultarán naturales.</p>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Vitvisor</h3>
+                <p style="color: #94A3B8; line-height: 1.6;">Tu plataforma de aprendizaje tecnológico.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Categorías</h3>
+                <ul>
+                    <li><a href="../index.html">Sistemas Operativos</a></li>
+                    <li><a href="../index.html">Ubuntu</a></li>
+                    <li><a href="../index.html">Programación</a></li>
+                    <li><a href="../index.html">Bases de Datos</a></li>
+                    <li><a href="../index.html">Redes</a></li>
+                    <li><a href="../index.html">Hardware</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../index.html#tutoriales">Tutoriales</a></li>
+                    <li><a href="../index.html#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Vitvisor. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
