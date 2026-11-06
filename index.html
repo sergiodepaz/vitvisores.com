@@ -17,22 +17,22 @@
     <!-- URL Canónica -->
     <link rel="canonical" href="https://sergiodepaz.github.io/vitvisore/">
     
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📘</text></svg>">
+    <!-- Favicon (Nuevo Icono) -->
+    <link rel="icon" href="https://i.postimg.cc/vBS3WzLT/android-chrome-512x512.png" type="image/png">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sergiodepaz.github.io/vitvisore/">
     <meta property="og:title" content="Vitvisor - Tutoriales de Informática y Tecnología">
     <meta property="og:description" content="Aprende informática, programación, redes, hardware y Ubuntu con nuestros tutoriales gratuitos.">
-    <meta property="og:image" content="https://i.postimg.cc/SR2Bsx9t/lenguaje-de-marcas.png">
+    <meta property="og:image" content="https://i.postimg.cc/vBS3WzLT/android-chrome-512x512.png">
     <meta property="og:locale" content="es_ES">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Vitvisor - Tutoriales de Informática y Tecnología">
     <meta name="twitter:description" content="Aprende informática, programación, redes, hardware y Ubuntu con nuestros tutoriales gratuitos.">
-    <meta name="twitter:image" content="https://i.postimg.cc/SR2Bsx9t/lenguaje-de-marcas.png">
+    <meta name="twitter:image" content="https://i.postimg.cc/vBS3WzLT/android-chrome-512x512.png">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -51,7 +51,16 @@
         
         header { background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(14, 165, 233, 0.3); }
         nav { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: white; }
+        
+        .logo { font-size: 1.5rem; font-weight: bold; display: flex; align-items: center; text-decoration: none; color: white; }
+        .logo img {
+            height: 40px;
+            width: auto;
+            border-radius: 8px;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+        
         .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
         .nav-links a { color: white; text-decoration: none; transition: opacity 0.3s; }
         .nav-links a:hover { opacity: 0.8; }
@@ -128,7 +137,10 @@
 
     <header>
         <nav aria-label="Navegación principal">
-            <a href="index.html" class="logo"><span>📘</span><span>Vitvisor</span></a>
+            <a href="index.html" class="logo">
+                <img src="https://i.postimg.cc/vBS3WzLT/android-chrome-512x512.png" alt="Logo Vitvisor">
+                <span>Vitvisor</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
                 <li class="dropdown">
@@ -163,9 +175,9 @@
     <main class="container" id="tutoriales">
         <div class="articles-grid" id="articlesGrid">
             
-            <!-- Artículo 1 -->
+            <!-- 1. Sistema Operativo -->
             <article class="article-card" data-category="Sistemas Operativos">
-                <img src="https://i.postimg.cc/qMyKtM4s/SOP.jpg" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop" alt="Sistema Operativo" class="article-image" loading="lazy">
                 <div class="article-content">
                     <span class="article-category">Sistemas Operativos</span>
                     <h3 class="article-title">¿Qué es un Sistema Operativo?</h3>
@@ -174,9 +186,9 @@
                 </div>
             </article>
 
-            <!-- Artículo 2 -->
+            <!-- 2. Lenguaje de Marcas -->
             <article class="article-card" data-category="Programación">
-                <img src="https://i.postimg.cc/kGgxF2st/lenguaje-de-marcas-p.png" loading="lazy">
+                <img src="https://i.postimg.cc/xjk1pwS3/image.png" alt="Lenguaje de Marcas" class="article-image" loading="lazy">
                 <div class="article-content">
                     <span class="article-category">Programación</span>
                     <h3 class="article-title">¿Qué es un Lenguaje de Marcas?</h3>
@@ -185,9 +197,9 @@
                 </div>
             </article>
 
-            <!-- Artículo 3 -->
+            <!-- 3. Internet -->
             <article class="article-card" data-category="Redes">
-                <img src="https://i.postimg.cc/TPzGWGRM/que-es-internetenerated-Image-x6e452x6e452x6e4.jpg" alt="Internet" class="article-image" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop" alt="Internet" class="article-image" loading="lazy">
                 <div class="article-content">
                     <span class="article-category">Redes</span>
                     <h3 class="article-title">¿Qué es Internet?</h3>
@@ -196,9 +208,9 @@
                 </div>
             </article>
 
-            <!-- Artículo 4 -->
+            <!-- 4. Servidor -->
             <article class="article-card" data-category="Redes">
-                <img src="https://i.postimg.cc/2SP8nnGm/servidor-que-es.jpg" alt="Servidor" class="article-image" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop" alt="Servidor" class="article-image" loading="lazy">
                 <div class="article-content">
                     <span class="article-category">Redes</span>
                     <h3 class="article-title">¿Qué es un Servidor?</h3>
@@ -207,7 +219,7 @@
                 </div>
             </article>
 
-            <!-- Artículo 5 -->
+            <!-- 5. SQL vs NoSQL -->
             <article class="article-card" data-category="Bases de Datos">
                 <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=300&fit=crop" alt="Base de Datos" class="article-image" loading="lazy">
                 <div class="article-content">
@@ -218,7 +230,7 @@
                 </div>
             </article>
 
-            <!-- Artículo 6 -->
+            <!-- 6. CPU -->
             <article class="article-card" data-category="Hardware">
                 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop" alt="CPU" class="article-image" loading="lazy">
                 <div class="article-content">
@@ -229,7 +241,7 @@
                 </div>
             </article>
 
-            <!-- Artículo 7 - Ubuntu (ahora en Sistemas Operativos) -->
+            <!-- 7. ¿Qué es Ubuntu? -->
             <article class="article-card" data-category="Sistemas Operativos">
                 <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=400&h=300&fit=crop" alt="Ubuntu Linux" class="article-image" loading="lazy">
                 <div class="article-content">
@@ -240,7 +252,7 @@
                 </div>
             </article>
 
-            <!-- Artículo 8 - Instalar Ubuntu (ahora en Sistemas Operativos) -->
+            <!-- 8. Instalar Ubuntu -->
             <article class="article-card" data-category="Sistemas Operativos">
                 <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=400&h=300&fit=crop" alt="Instalar Ubuntu" class="article-image" loading="lazy">
                 <div class="article-content">
@@ -251,9 +263,9 @@
                 </div>
             </article>
 
-            <!-- Artículo 9 - Comandos Ubuntu (ahora en Sistemas Operativos) -->
+            <!-- 9. Comandos Ubuntu -->
             <article class="article-card" data-category="Sistemas Operativos">
-                <img src="https://i.postimg.cc/ZYDHPqGx/ubuntucomand-Generated-Image-fspsknfspsknfsps.jpg" alt="Terminal Ubuntu" class="article-image" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=400&h=300&fit=crop" alt="Terminal Ubuntu" class="article-image" loading="lazy">
                 <div class="article-content">
                     <span class="article-category">Sistemas Operativos</span>
                     <h3 class="article-title">Comandos Básicos de la Terminal en Ubuntu</h3>
@@ -262,7 +274,7 @@
                 </div>
             </article>
 
-            <!-- Artículo 10 - Ubuntu vs Windows (ahora en Sistemas Operativos) -->
+            <!-- 10. Ubuntu vs Windows -->
             <article class="article-card" data-category="Sistemas Operativos">
                 <img src="https://images.unsplash.com/photo-1633419461186-7d40a38105ec?w=400&h=300&fit=crop" alt="Ubuntu vs Windows" class="article-image" loading="lazy">
                 <div class="article-content">
@@ -273,7 +285,7 @@
                 </div>
             </article>
 
-            <!-- NUEVO: Artículo 11 - HTML Estructura Básica -->
+            <!-- 11. HTML Estructura Básica -->
             <article class="article-card" data-category="Lenguajes de Marcas">
                 <img src="https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=400&h=300&fit=crop" alt="HTML Estructura" class="article-image" loading="lazy">
                 <div class="article-content">
@@ -284,7 +296,7 @@
                 </div>
             </article>
 
-            <!-- NUEVO: Artículo 12 - Fuente de Alimentación -->
+            <!-- 12. Fuente de Alimentación -->
             <article class="article-card" data-category="Hardware">
                 <img src="https://images.unsplash.com/photo-1587202372162-635d84b9c8f7?w=400&h=300&fit=crop" alt="Fuente de Alimentación" class="article-image" loading="lazy">
                 <div class="article-content">
@@ -295,7 +307,7 @@
                 </div>
             </article>
 
-            <!-- NUEVO: Artículo 13 - IP y MAC -->
+            <!-- 13. IP y MAC -->
             <article class="article-card" data-category="Redes">
                 <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop" alt="IP y MAC" class="article-image" loading="lazy">
                 <div class="article-content">
@@ -391,6 +403,7 @@
     </footer>
 
     <script>
+        // Smooth scroll para enlaces
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -401,6 +414,7 @@
             });
         });
 
+        // Búsqueda en tiempo real
         const searchInput = document.getElementById('searchInput');
         const articles = document.querySelectorAll('.article-card');
         const noResults = document.getElementById('noResults');
@@ -425,6 +439,7 @@
             noResults.classList.toggle('show', visibleCount === 0 && query !== '');
         });
 
+        // Filtrar por categoría desde el menú dropdown
         document.querySelectorAll('.dropdown-menu a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
